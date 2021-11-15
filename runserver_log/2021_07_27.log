@@ -1,0 +1,28 @@
+具体时间:[2021-07-27 22:45:59,799][default:INFO(22)]
+当前文件位置:[/home/yanyi/Project/MainManage/ServerData/user/login_required.py]模块名:[login_required:]函数名:[process_request]:
+[第22行]-用户没有登录, 跳转到登录页面
+
+具体时间:[2021-07-27 22:46:01,347][default:INFO(22)]
+当前文件位置:[/home/yanyi/Project/MainManage/ServerData/user/login_required.py]模块名:[login_required:]函数名:[process_request]:
+[第22行]-用户没有登录, 跳转到登录页面
+
+具体时间:[2021-07-28 01:27:45,553][default:INFO(184)]
+当前文件位置:[/home/yanyi/Project/MainManage/ServerData/TY_RMS_Multiple_Manage/views.py]模块名:[views:]函数名:[account_login]:
+[第184行]-登录成功
+
+具体时间:[2021-07-28 01:41:16,158][default:INFO(22)]
+当前文件位置:[/home/yanyi/Project/MainManage/ServerData/user/login_required.py]模块名:[login_required:]函数名:[process_request]:
+[第22行]-用户没有登录, 跳转到登录页面
+
+具体时间:[2021-07-28 01:41:57,530][default:INFO(184)]
+当前文件位置:[/home/yanyi/Project/MainManage/ServerData/TY_RMS_Multiple_Manage/views.py]模块名:[views:]函数名:[account_login]:
+[第184行]-登录成功
+
+具体时间:[2021-07-28 01:44:57,622][default:INFO(22)]
+当前文件位置:[/home/yanyi/Project/MainManage/ServerData/user/login_required.py]模块名:[login_required:]函数名:[process_request]:
+[第22行]-用户没有登录, 跳转到登录页面
+
+具体时间:[2021-07-30 19:07:25,952][default:INFO(22)]
+当前文件位置:[/home/yanyi/Project/MainManage/ServerData/user/login_required.py]模块名:[login_required:]函数名:[process_request]:
+[第22行]-用户没有登录, 跳转到登录页面
+

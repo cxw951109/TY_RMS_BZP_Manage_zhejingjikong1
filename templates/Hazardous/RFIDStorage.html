@@ -1,0 +1,482 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'layuiadmin/layui/css/layui.css' %}" media="all">
+    <style type="text/css">
+        body {
+            background-color: #FFF !important;
+        }
+
+
+        .ibox {
+            padding-left: 25px;
+            padding-right: 25px;
+        }
+
+        .dataTables_wrapper {
+            padding-bottom: 0px !important;
+        }
+
+        th, td {
+            white-space: nowrap;
+        }
+
+        .keyCabinetBox {
+            width: 1000px;
+            display: flex;
+        }
+
+        .keyCabinetBox ul {
+            width: 700px;
+            height: 430px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .keyCabinetBox li {
+            width: 135px;
+            height: 80px;
+            line-height: 80px;
+            text-align: center;
+            background-color: green;
+            border-radius: 30px;
+            /* margin-right: 5px; */
+            color: #FFF;
+            font-size: 20px;
+            cursor: pointer;
+            border: 1px solid #000000;
+        }
+
+        .keyCabinetBoxView {
+
+            background-color: goldenrod !important;
+            color: #FFF;
+            font-size: 22px !important;
+
+        }
+
+        .keyCabinetBox .keyCabinetTitle {
+            text-align: center;
+            line-height: 30px;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .keyCabinetBox .keyCabinetTitle input {
+            text-align: center;
+        }
+
+        .flowdrugList {
+            /* background-color:rgb(185, 178, 178); */
+            background-color: rgb(223, 223, 215);
+            border-radius: 5px;
+            padding: 20px;
+        }
+
+        .flowList {
+            width: 280px;
+            background-color: rgb(223, 223, 215);
+            border-radius: 5px;
+            margin-left: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: center;
+        }
+
+        .flowList .flowItem {
+            height: 60px;
+            line-height: 60px;
+            font-size: 20px;
+            width: 200px;
+            text-align: center;
+            background-color: #ffffff;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .flowItem:hover {
+            background-color: #1E9FFF !important;
+            color: #FFFFFF !important;
+        }
+
+        .flowItemHover {
+            background-color: #1E9FFF !important;
+            color: #FFFFFF !important;
+        }
+
+        .drugkx {
+            background-color: rgb(231, 227, 227) !important;
+
+        }
+
+        .cabinetTitle {
+            line-height: 90px;
+            font-size: 20px;
+            color: gray;
+        }
+
+        .flowdrugListShow {
+            display: flex;
+            width: 700px;
+            height: 430px;
+        }
+
+        .flowdrugBlock {
+            display: flex;
+            margin-bottom: 6px;
+        }
+
+        .flowdrugBlock-left {
+            width: 80px;
+            height: 80px;
+            /* line-height: 80px; */
+            text-align: center;
+            background-color: green;
+            border-radius: 40px;
+            /* margin-right: 5px; */
+            color: #171116;
+            font-size: 20px;
+            cursor: pointer;
+            border: 1px solid #000000;
+        }
+
+        .flowdrugBlock-right {
+            height: 80px;
+            line-height: 80px;
+        }
+
+        .flowdrugBlock-name {
+            font-size: 18px;
+            height: 60px;
+            line-height: 70px;
+            display: none;
+        }
+
+        .flowdrugBlock-position {
+            font-size: 15px;
+            line-height: 80px;
+            color: #0a0707;
+        }
+
+    </style>
+
+    <div class="ibox float-e-margins">
+        <div style="text-align: center;line-height: 60px;font-size: 20px;">RFID试剂入库</div>
+        <form class="form-horizontal myForm" role="form">
+            {% if not template_obj %}
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <table id="dataTableModel" style="height: 400px;"
+                               class="table table-striped table-bordered table-hover dataTables-example">
+                            <thead>
+                            <tr>
+                                <th>类型ID1</th>
+                                <th>类型名称</th>
+                                <th>EnglishName</th>
+                                <th>纯度</th>
+                                <th>CAS码</th>
+                                <th>生产日期</th>
+                                <th>保质期（天）</th>
+                                <th>价格（元）</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            {% else %}
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <table id="dataTableModel"
+                               class="table table-striped table-bordered table-hover dataTables-example">
+                            <thead>
+                            <tr>
+                                <th>类型ID</th>
+                                <th>类型名称</th>
+                                <th>EnglishName</th>
+                                <th>纯度</th>
+                                <th>CAS码</th>
+                                <th>生产日期</th>
+                                <th>保质期（天）</th>
+                                <th>价格（元）</th>
+                                <th>状态</th>
+                                <th>生产厂商</th>
+                                <th>销售商</th>
+                                <th>价格（元）</th>
+                                <th>规格</th>
+                                <th>单位</th>
+                                <th>规格单位</th>
+                            </tr>
+
+                            </thead>
+                            <tbody>
+                            {# 加载自定过滤器 #}
+                            {% load myfilter %}
+                            {% for template_content1 in all_children_template_list %}
+                                <tr class="gradeA" id="">
+                                    <td>{% firstof template_content1.VarietyId '' %} </td> <!--种类id-->
+                                    <td>{% firstof template_content1.Name '' %}</td> <!--中文名称 Name-->
+                                    <td>{% firstof template_content1.EnglishName '' %}</td><!--英文名称 EenglistName-->
+                                    <td>{% firstof template_content1.Purity '' %}</td><!--纯度-->
+                                    <td>{% firstof template_content1.CASNumber '' %}</td>
+                                    <td style="width:75px;text-align: center">{% firstof template_content1.ProductionDate '' %}</td>
+                                    <td>{% firstof template_content1.ShelfLife '' %}</td>
+                                    <td>{% firstof template_content1.Price '' %}</td>
+                                    <td>未入库</td>
+                                    <td>{% firstof template_content1.Manufacturer '' %}</td>
+                                    <td>{% firstof template_content1.Distributor '' %}</td>
+                                    <td>{% firstof template_content1.Price '' %}</td>
+                                    <td>{% firstof template_content1.Speci '' %}</td>
+                                    <td>{% firstof template_content1.Unit '' %}</td>
+                                    <td>{% firstof template_content1.SpeciUnit '' %}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+            {% endif %}
+
+
+            <div class="form-group" style="position:fixed; left:15px; bottom:20px;width:900px">
+
+                <!-- <div class="col-md-1 col-md-offset-11">
+                    <button class="btn btn-white" type="button" id="closeForm">关闭</button>
+                </div> -->
+            </div>
+            <!--  隐藏client_id -->
+            <input type="hidden" name="" value="{{ client_id }}" id="client_id">
+            <input type="hidden" name="" value="{{ CustomerId }}" id="CustomerId">
+
+        </form>
+        <div style="line-height: 80px;font-size: 18px;text-align: center;" class="approve-status layui-bg-orange">
+            请识别RFID标签
+        </div>
+    </div>
+    <div id="selectGuizi" style="overflow: hidden;" hidden>
+        <form class="layui-form" lay-filter="layuiadmin-form-admin" id="layuiadmin-form-admin"
+              style="padding: 20px 0 0 100px;">
+            <div style="display: flex; justify-content: center;width: 100%">
+                <div class="keyCabinetBox">
+                    <div class="flowList">
+                        <div class="cabinetTitle">柜体位置</div>
+                        <div class="flowItem">1层</div>
+                        <div class="flowItem">2层</div>
+                        <div class="flowItem">3层</div>
+                        <div class="flowItem">4层</div>
+                        <div class="flowItem">5层</div>
+                        <div class="flowItem">6层</div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+
+    {% load static %}
+    <script src="{% static 'js/warning.js' %}"></script>
+
+    <script type="text/javascript">
+        var staticPath = "{% static '/' %}";
+
+
+        // flag_status 用来RFID入库禁止频繁弹窗
+        var flag_status = true;
+
+        window.focus();   // 当前页面获得焦点用来RFID扫描
+        var template_index = 0;
+        var barCode_ = "";
+        var xxxIndex = 0;
+
+        function PutIn(place) {
+            if (flag_status) {
+                var index = layer.load(2, {shade: 0.01});
+                flag_status = false;
+
+                //获取该一维码对应指定行数据，准备到表单中提交后台入库
+                var data_list = ["VarietyId", "Name", "EnglishName", "Purity", "CASNumber", "ProductionDate", "ShelfLife", "Price", "", "", "", ""]
+                $("find-barCode");
+                // 引入flavr 弹窗插件
+                // 触发ajax  提交绑定表单
+                $.ajax({
+
+                    type: 'POST',
+                    url: '{% url 'Hazardous:PutInView' %}',
+                    data: {
+                        template_index: template_index,
+                        client_id: $('#client_id').val(),
+                        CustomerId: $('#CustomerId').val(),
+                        barCode: barCode_,
+                        place: place,
+                    },
+                    success: function (data) {
+                        //  改变datatable指定列的值
+
+                        if (data.status == 0) {
+                            flag_status = true;
+                            document.getElementById('dataTableModel').rows[template_index + 1].cells[7].innerHTML = '已入库';
+                            layer.close(index);
+                            if (template_index == 0) {
+                                $('.gradeA:first-child').css('color', 'red');
+                                $('.gradeA:first-child').css('font-weight', 700);
+                                $('.gradeA:first-child').css('background-color', '#DCDCDC');
+                            } else {
+                                $('.gradeA:nth-child(' + (template_index + 1) + ')').css('color', 'red');
+                                $('.gradeA:nth-child(' + (template_index + 1) + ')').css('font-weight', 700);
+                                $('.gradeA:nth-child(' + (template_index + 1) + ')').css('background-color', '#DCDCDC');
+                            }
+                            template_index += 1
+                            layer.open({
+                                type: 2
+                                , title: '标准品证书拍照上传（编号：' + barCode + '）'
+                                , content: "{% url 'standard:photographForm' %}"
+                                , area: ['800px', '630px']
+                                , shade: [0.1, '#000']
+                                , offset: '2px'
+                                , btn: ['保存', '取消']
+                                , yes: function (index, layero) {
+                                    var iframeWindow = window['layui-layer-iframe' + index]
+                                    var submitID = 'LAY-user-front-submit'
+                                        , submit = layero.find('iframe').contents().find('#' + submitID);
+
+                                    submit.trigger('click');
+                                }
+                                , end: function () {
+                                    if (sessionStorage.getItem("photographDataSrc") == "") {
+                                        new $.flavr({
+                                            content: '设置失败！',
+                                            autoclose: true, timeout: 800
+                                        });
+                                        return false;
+                                    }
+                                    var psrc = staticPath + sessionStorage.getItem("photographDataSrc");
+                                    $.post("{% url 'drug:setDrugImageUrl' %}", {
+                                        MedicamentId: data.data,
+                                        ImageUrl: psrc
+                                    }, function (obj) {
+                                        sessionStorage.removeItem("photographDataSrc")
+                                        if (obj.status == 1) {
+                                            new $.flavr({
+                                                content: '设置成功！',
+                                                autoclose: true, timeout: 800
+                                            });
+                                            tableModel.draw(false);
+                                            location.href = "{% url 'drug_index' %}";
+                                            return false;
+                                        } else {
+                                            new $.flavr({
+                                                content: obj.message,
+                                                autoclose: true, timeout: 2000
+                                            });
+                                            return false;
+                                        }
+                                    });
+                                    $(".dataTables_scrollBody").scrollTop((template_index * 35) - 15);
+
+                                }
+                            });
+                        } else {
+
+                            layer.close(index);
+                            new $.flavr({
+                                modal: false,
+                                autoclose: false,
+                                timeout: 2000,
+                                buttons: {
+                                    OK: {
+                                        text: '确认',
+                                        style: 'danger',
+                                        addClass: null,
+                                        action: function (e) {
+
+                                            flag_status = true;
+                                            // socket.send('123123');
+                                        }
+                                    },
+                                },
+                                content: data.message
+                            });
+                        }
+                    },
+                    error: function () {
+                        alert('数据异常！');
+                        flag_status = true;
+                        layer.close(index);
+                        // socket.send('886');
+                    }
+                });
+
+            } else {
+
+
+            }
+        }
+
+        //挂钩jquery插件，实现条码识别
+        $(document).barCodeScanerModeEnter(function (barCode) {
+            if (barCode) {
+                barCode_ = barCode
+                xxxIndex = layer.open({
+                    type: 1,
+                    shade: false,
+                    title: '选择编号：' + barCode + '；的存放位置',//不显示标题
+                    area: ['500px', '600px'], //宽高
+                    content: $('#selectGuizi'), //捕获的元素，注意：最好该指定的元素要存放在body最外层，否则可能被其它的相对元素所影响
+                    cancel: function () {
+
+                    }
+                });
+
+
+            }
+        });
+
+
+        //监听窗口关闭事件，当窗口关闭时，主动去关闭websocket连接，防止连接还没断开就关闭窗口，server端会抛异常。
+
+
+        var index = parent.layer.getFrameIndex(window.name);
+        $(function () {
+            var tableModel = $('#dataTableModel').DataTable({
+                searching: false,
+                lengthChange: false,
+                select: true,
+                "bPaginate": false,
+                'scrollX': false,
+                'autoWidth': true,
+                'scrollY': true,
+                "ordering": false,
+                "scrollY": "380px",
+                // "scrollCollapse": true,
+                columnDefs: [{
+                    "targets": [0, 9, 10, 11, 12, 13, 14],
+                    "visible": false
+                }],
+            });
+
+
+            $("#closeForm").click(function () {
+                // socket.send('886');
+                parent.layer.close(index);
+            });
+
+            $(".flowItem").click(function () {
+                var place = $(this).text();
+                layer.close(xxxIndex);
+                PutIn(place);
+            })
+
+        })
+
+    </script>
+
+
+
+{% endblock %}

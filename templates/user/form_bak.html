@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+{% load static %}
+
+<link href="{% static 'css/plugins/iCheck/custom.css'  %}" rel="stylesheet" />
+<style type="text/css">
+    body {
+        background-color: #FFF !important;
+    }
+
+    .myForm {
+        padding-top: 30px;
+        padding-right: 50px;
+    }
+</style>
+
+<div class="ibox float-e-margins">
+    <form class="form-horizontal myForm" role="form">
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="ds_host">工号*</label>
+            <div class="col-sm-4">
+                <input class="form-control" type="text" id="UserCode" required="required" name="UserCode" value="{% firstof user.UserCode '' %}" />
+                <input class="form-control" id="UserId" name="UserId" type="hidden" value="{% firstof user.UserId '' %}" />
+            </div>
+            <label class="col-sm-2 control-label" for="ds_host">编号*</label>
+            <div class="col-sm-4">
+                <input class="form-control" type="number" id="BarCode" required  name="BarCode" value="{% firstof user.BarCode '' %}" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="ds_username">姓名*</label>
+            <div class="col-sm-4">
+                <input class="form-control" id="realName" name="realName" required="required" type="text" value="{% firstof user.RealName '' %}" />
+            </div>
+            <label class="col-sm-2 control-label" for="ds_name">角色*</label>
+            <div class="col-sm-4">
+                <select required="required" id="RoleId" name="RoleId" class="chosen-select" style="width:245px;">
+                    {% if user.RoleId == 'b0c86811-ec53-4d7e-bd81-84f146e43dce' %}
+                    <option value="b0c86811-ec53-4d7e-bd81-84f146e43dce" selected>普通用户</option>
+                    <option value="19535c92-8da4-4645-88c5-9a4ee3fdb22e">管理员</option>
+                    {% else %}
+                        <option value="b0c86811-ec53-4d7e-bd81-84f146e43dce">普通用户</option>
+                    <option value="19535c92-8da4-4645-88c5-9a4ee3fdb22e" selected>管理员</option>
+                    {% endif %}
+{#                    <option value="5093e125-5559-4c27-a7fb-1730ed2c8f32">维护人员</option>#}
+
+                </select>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="ds_username">生日</label>
+            <div class="col-sm-4">
+                <div class="input-group date">
+                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    <input type="text" class="form-control" id="Birthday" name="Birthday" value="{% firstof user.Birthday|date:"Y-m-d" '' %}" data-mask="9999-99-99">
+
+                </div>
+            </div>
+            <label class="col-sm-2 control-label" for="ds_password">性别*</label>
+            <div class="col-sm-4">
+                <label class="radio-inline i-checks">
+                    <input type="radio" value="1" id="optionsRadios1" name="Sex" checked>男
+                </label>
+                <label class="radio-inline i-checks">
+                    {% if user.Sex == 0 %}
+                    <input type="radio" value="0" id="optionsRadios1" name="Sex" checked>女
+                    {% else %}
+                    <input type="radio" value="0" id="optionsRadios1" name="Sex">女
+                    {% endif %}
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="ds_password">QQ</label>
+            <div class="col-sm-4">
+                <input class="form-control" id="QQ" name="QQ" value="{% firstof user.QQ '' %}" />
+            </div>
+            <label class="col-sm-2 control-label" for="ds_username">Email</label>
+            <div class="col-sm-4">
+                <input class="form-control" id="Email" name="Email" type="email" value="{% firstof user.Email '' %}" />
+            </div>
+
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="ds_password">电话</label>
+            <div class="col-sm-4">
+                <input class="form-control" id="Mobile" name="Mobile" value="{% firstof user.Mobile '' %}" />
+            </div>
+            <label class="col-sm-2 control-label" for="ds_password">是否启用</label>
+            <div class="col-sm-4">
+                {% if user.IsEnabled  %}
+                <input type="checkbox" class="js-switch_2" id="IsEnabledSwich" checked />
+                    {% else %}
+                    <input type="checkbox" class="js-switch_2" id="IsEnabledSwich" />
+                {% endif %}
+                <input type="hidden" id="IsEnabled" name="IsEnabled" />
+            </div>
+        </div>
+        <div class="hr-line-dashed"></div>
+        <div class="form-group">
+            <div class="col-sm-12 col-sm-offset-2">
+                <button class="btn btn-primary" type="submit">保存内容</button>&nbsp;&nbsp;&nbsp;
+                <button class="btn btn-white" type="button" id="closeForm">关闭</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="{% static 'js/plugins/iCheck/icheck.min.js' %}"></script>
+<script src="{% static 'js/plugins/datapicker/bootstrap-datepicker.js' %}"></script>
+<script src="{% static 'js/utils.js' %}"></script>
+                <script src="{% static 'js/warning.js' %}"></script>
+
+<script type="text/javascript">
+    var index = parent.layer.getFrameIndex(window.name);
+    $(function () {
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green',
+        });
+        $(".chosen-select").chosen({
+            no_results_text: "没有找到",
+            allow_single_deselect: true,
+            disable_search: true
+        });
+        $("#IsEnabled").val($("#IsEnabledSwich").is(":checked") ? 1 : 0);
+        $("#IsEnabledSwich").change(function () {
+            $("#IsEnabled").val($("#IsEnabledSwich").is(":checked") ? 1 : 0);
+        });
+        $(".myForm").submit(function () {
+            var loadIndex = layer.load(2);
+            $.post("{% url 'user:saveUserData' %}", $(this).serialize(), function (obj) {
+                layer.close(loadIndex);
+                if (obj.status == 1) {
+                    msg("保存成功", function () {
+                        parent.layer.close(index);
+                    });
+                }
+                else {
+                    msg("保存失败 " + obj.message);
+                }
+            });
+            return false;
+        });
+        $("#closeForm").click(function () {
+            parent.layer.close(index);
+        });
+    })
+</script>
+
+
+{% endblock %}

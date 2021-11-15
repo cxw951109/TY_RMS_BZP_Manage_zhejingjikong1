@@ -1,0 +1,230 @@
+{#{% extends 'base.html' %}#}
+{##}
+{#{% block content %}#}
+{##}
+{#<div class="ibox-content" style="height:520px;padding:5px">#}
+{#    <table id="dataTableModel" class="table table-striped table-bordered table-hover dataTables-example">#}
+{#        <thead>#}
+{#            <tr>#}
+{#                <th>预警ID</th>#}
+{#                <th width="100">条码编号</th>#}
+{#                <th width="100">药剂名称</th>#}
+{#                <th width="100">领用人</th>#}
+{#                <th width="200">领用时间</th>#}
+{#                <th width="100">是否归还</th>#}
+{#                <!-- <th style="text-align:center">状态</th> -->#}
+{#            </tr>#}
+{#        </thead>#}
+{#        <tbody>#}
+{##}
+{#        </tbody>#}
+{#    </table>#}
+{#</div>#}
+{#    {% load static %}#}
+{#    <script src="{% static 'js/warning.js' %}"></script>#}
+{##}
+{##}
+{#<script type="text/javascript">#}
+{#    $(function () {#}
+{#        var tableModel = $('#dataTableModel').DataTable({#}
+{#            searching: false,#}
+{#            lengthChange: false,#}
+{#            select: true,#}
+{#            "ordering": false,#}
+{#            iDisplayLength: 10,#}
+{#            "bPaginate": true,#}
+{#            "info": "true",#}
+{#            "scrollY": "472px",#}
+{#            "scrollCollapse": true,#}
+{#            ajax: {#}
+{#                url: '{% url 'home:homeDrugOutListJson' %}',#}
+{#                dataSrc: 'data',#}
+{#            },#}
+{#            columns: [#}
+{#            { data: 'BarCode' },#}
+{#            { data: 'Name' },#}
+{#            { data: 'ByUserName' },#}
+{#            { data: 'ByUserDate' },#}
+{#            { data: 'Status' },#}
+{#            ],#}
+{#            createdRow: function (row, data, dataIndex) {#}
+{#                // $(row).children('td').eq(4).html(data.IsSolve == 1 ? "<span class='label label-warning'>已解决</span>" : "<span class='label label-default'>未解决</span>");#}
+{#                // $(row).children('td').eq(4).attr('style', 'text-align: center;');#}
+{#                $(row).children('td').eq(3).html(get_date(data.ByUserDate));#}
+{#                $(row).children('td').eq(4).html(get_warning_type(data.Status))#}
+{#            },#}
+{#            columnDefs: [#}
+{#           {#}
+{#               "targets": [0],#}
+{#               "visible": false#}
+{#           }]#}
+{#        });#}
+{#        function get_warning_type(params) {#}
+{#            switch (params) {#}
+{#                case '1':#}
+{#                    return '药剂保质期预警';#}
+{#                case '2':#}
+{#                    return '药剂过期报警';#}
+{#                case '3':#}
+{#                    return '药剂余量预警';#}
+{#                case '4':#}
+{#                    return '药柜温湿度预警';#}
+{#                case '5':#}
+{#                    return '药柜滤芯保质期预警';#}
+{#                case '6':#}
+{#                    return '药剂出库超期预警'#}
+{#            }#}
+{#        }#}
+{#        function get_date(params) {#}
+{#               if(params){#}
+{#               return params.replace('T', ' ')#}
+{#           }#}
+{#                }#}
+{#    });#}
+{#</script>#}
+{#{% endblock %}#}
+
+
+{% extends 'base.html' %}
+<style>
+
+
+</style>
+
+{% block content %}
+    <table id="demo" lay-filter="test"></table>
+    <!-- <div class="ibox-content" style="height:520px;padding:5px">
+        <table id="dataTableModel" class="table table-striped table-bordered table-hover dataTables-example">
+            <thead>
+                <tr>
+                    <th>药剂条码编号</th>
+                    <th>CAS码</th>
+                    <th>药剂名称</th>
+                    <th>纯度</th>
+                    <th>操作时间</th>
+                    <th>操作类型</th>
+                    <th>操作人</th>
+                    <th>位置</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div> -->
+    {% load static %}
+    <script src="{% static 'js/utils.js' %}"></script>
+    <script src="{% static 'js/warning.js' %}"></script>
+
+    <script type="text/javascript">
+        var table = layui.table;
+        let dataTable = []
+        //执行渲染
+        table.render({
+            elem: '#demo', //指定原始表格元素选择器（推荐id选择器）
+            // height: 312, //容器高度
+            cols: [
+                [{field: 'BarCode', title: '药剂条码编号', width: 150, sort: true},
+                    {field: 'CASNumber', title: 'CAS码', width: 110, sort: true},
+                    {field: 'Name', title: '药剂名称', width: 110, sort: true},
+                    {field: 'Purity', title: '纯度', width: 180, sort: true},
+                    {
+                        field: 'ByUserDate', title: '领用时间', width: 220, sort: true, templet: function (d) {
+                            if (d.ByUserDate) {
+                                return d.ByUserDate.replace('T', ' ')
+                            }
+                        }
+                    }, {
+                    field: 'ByUserDate', title: '未归还天数', width: 150, sort: true, templet: function (d) {
+                        if (d.ByUserDate) {
+                            var d1 = new Date(d.ByUserDate);
+                            var d2 = new Date();
+                            return parseInt((d2 - d1) / 1000 / 3600/ 24);
+                        } else {
+                            return 0
+                        }
+                    }
+                },
+                    {
+                        field: 'RecordType', title: '操作类型', width: 150, sort: true, templet: function (d) {
+                            return '领用'
+                        }
+                    },
+                    {field: 'ByUserName', title: '操作人', width: 150, sort: true},
+                    {
+                        field: 'Place', title: '是否归还', width: 150, sort: true, templet: function (d) {
+                            return '否'
+                        }
+                    }]
+            ], //设置表头
+            url: '{% url 'home:homeDrugOutListJson' %}',
+            page: true,
+            id: "test",
+            limit: 10,
+            even: true,
+            autoSort: true,
+            where: {BarCode: '{{ BarCode }}'},
+            done: function (res, curr, count) {
+                //如果是异步请求数据方式，res即为你接口返回的信息。
+                //如果是直接赋值的方式，res即为：{data: [], count: 99} data为当前页数据、count为数据总长度
+                console.log(res);
+                //得到当前页码
+                console.log(curr);
+
+                //得到数据总量
+                console.log(count);
+            },
+        });
+        $(function () {
+
+            var tableModel = $('#dataTableModel').DataTable({
+                searching: false,
+                lengthChange: false,
+                select: true,
+                order: [4, 'desc'],
+                "bPaginate": true,
+                iDisplayLength: 10,
+                "info": true,
+                "scrollY": "460px",
+                "scrollCollapse": true,
+                ajax: {
+                    url: '{% url 'home:homeDrugOutListJson' %}',
+                    dataSrc: 'data',
+                },
+                columns: [
+                    {data: 'BarCode'},
+                    {data: 'CASNumber'},
+                    {data: 'Name'},
+                    {data: 'Purity'},
+                    {data: 'ByUserDate'},
+                    {data: 'RecordType'},
+                    {data: 'ByUserName'},
+                    {data: 'Place'}
+                ],
+                createdRow: function (row, data, dataIndex) {
+                    $(row).children('td').eq(4).html(get_date(data.ByUserDate));
+                    $(row).children('td').eq(7).html("否")
+                }
+
+            });
+
+            function get_recordType(params) {
+                switch (params) {
+                    case 1:
+                        return '入库';
+                    case 2:
+                        return '领用';
+                    case 3:
+                        return '归还';
+                }
+            }
+
+            // 格式化sqlAlchemy的时间格式
+            function get_date(params) {
+                if (params) {
+                    return params.replace('T', ' ')
+                }
+            }
+        });
+
+    </script>
+
+{% endblock %}

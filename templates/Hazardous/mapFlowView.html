@@ -1,0 +1,174 @@
+{% extends 'baseBZPForm.html' %}
+
+{% block content %}
+    {% load static %}
+    <style>
+        .keyCabinetBox {
+            width: 1000px;
+            display: flex;
+        }
+
+        .keyCabinetBox ul {
+            width: 700px;
+            height: 430px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .keyCabinetBox li {
+            width: 135px;
+            height: 80px;
+            line-height: 80px;
+            text-align: center;
+            background-color: green;
+            border-radius: 30px;
+            /* margin-right: 5px; */
+            color: #FFF;
+            font-size: 20px;
+            cursor: pointer;
+            border: 1px solid #000000;
+        }
+
+        .keyCabinetBoxView {
+
+            background-color: goldenrod !important;
+            color: #FFF;
+            font-size: 22px !important;
+
+        }
+
+        .keyCabinetBox .keyCabinetTitle {
+            text-align: center;
+            line-height: 30px;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .keyCabinetBox .keyCabinetTitle input {
+            text-align: center;
+        }
+
+        .flowdrugList {
+            /* background-color:rgb(185, 178, 178); */
+            background-color: rgb(223, 223, 215);
+            border-radius: 5px;
+            padding: 20px;
+        }
+
+        .flowList {
+            width: 280px;
+            background-color: rgb(223, 223, 215);
+            border-radius: 5px;
+            margin-left: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: center;
+        }
+
+        .flowList .flowItem {
+            height: 60px;
+            line-height: 60px;
+            font-size: 20px;
+            width: 200px;
+            text-align: center;
+            background-color: #ffffff;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .flowItemHover {
+            background-color: #1E9FFF !important;
+            color: #FFFFFF !important;
+        }
+
+        .drugkx {
+            background-color: rgb(231, 227, 227) !important;
+
+        }
+
+        .cabinetTitle {
+            line-height: 90px;
+            font-size: 20px;
+            color: gray;
+        }
+
+        .flowdrugListShow {
+            display: flex;
+            width: 700px;
+            height: 430px;
+        }
+
+        .flowdrugBlock {
+            display: flex;
+            margin-bottom: 6px;
+        }
+
+        .flowdrugBlock-left {
+            width: 80px;
+            height: 80px;
+            /* line-height: 80px; */
+            text-align: center;
+            background-color: green;
+            border-radius: 40px;
+            /* margin-right: 5px; */
+            color: #171116;
+            font-size: 20px;
+            cursor: pointer;
+            border: 1px solid #000000;
+        }
+
+        .flowdrugBlock-right {
+            height: 80px;
+            line-height: 80px;
+        }
+
+        .flowdrugBlock-name {
+            font-size: 18px;
+            height: 60px;
+            line-height: 70px;
+            display: none;
+        }
+
+        .flowdrugBlock-position {
+            font-size: 15px;
+            line-height: 80px;
+            color: #0a0707;
+        }
+    </style>
+    <form class="layui-form" lay-filter="layuiadmin-form-admin" id="layuiadmin-form-admin"
+          style="padding: 20px 0 0 0;width: 100%;">
+        <div style="display: flex; justify-content: center;width: 100%;">
+            <div class="keyCabinetBox">
+                <div class="flowList">
+                    <div class="cabinetTitle">2号柜</div>
+                    <div class="flowItem">1层</div>
+                    <div class="flowItem flowItemHover">2层</div>
+                    <div class="flowItem">3层</div>
+                    <div class="flowItem">4层</div>
+                    <div class="flowItem">5层</div>
+                </div>
+            </div>
+            <div class="layui-form-item layui-hide">
+                <input type="button" lay-submit lay-filter="LAY-user-front-submit" id="LAY-user-front-submit"
+                       value="确认">
+            </div>
+        </div>
+    </form>
+
+    <script>
+        $(function () {
+            $(".flowdrugListShow").hide();
+            $(".flowdrugListShow").eq(1).show();
+            $(".flowItem").hover(function () {
+                $(this).addClass("flowItemHover").siblings().removeClass("flowItemHover");
+                $(".flowdrugListShow").hide();
+                $(".flowdrugListShow").eq($(this).index(".flowItem")).show();
+
+            });
+
+        });
+
+    </script>
+{% endblock %}

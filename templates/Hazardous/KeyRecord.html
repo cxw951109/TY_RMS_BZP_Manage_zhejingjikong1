@@ -1,0 +1,62 @@
+{% extends 'baseBZP.html' %}
+<style>
+
+
+</style>
+
+{% block content %}
+    <div class="ibox-content" style="height:520px;padding:5px">
+        <input name="Id" id="key_id" type="hidden" value="{{ key_id }}"/>
+        <table id="LAY-datatable" lay-filter="LAY-datatable"></table>
+    </div>
+    {% load static %}
+    <script src="{% static 'js/utils.js' %}"></script>
+    <script src="{% static 'js/warning.js' %}"></script>
+
+    <script type="text/javascript">
+        // 格式化sqlAlchemy的时间格式
+        function get_date(params) {
+            if (params) {
+                return params.replace('T', ' ')
+            }
+        }
+
+        layui.use(['index', 'table'], function () {
+            var table = layui.table
+                , form = layui.form;
+
+            //列表数据
+            table.render({
+                elem: '#LAY-datatable'
+                , url: "{% url 'Hazardous:getKeyRecordListJson' %}"
+                , size: 'lg'
+                ,order:[4, 'desc']
+                , cols: [[
+                    {field: 'BarCode', width: 200, sort: true, title: '条码编号'}
+                    , {field: 'Name', width: 180, title: '钥匙名称', sort: true, minWidth: 100}
+                    , {field: 'CreateUserName', width: 180, title: '操作人', sort: true, minWidth: 100}
+                    , {field: 'RecordType', width: 180, title: '操作说明', sort: true, minWidth: 100}
+                    , {field: 'CreateDate', width: 180, title: '操作时间', sort: true, minWidth: 100}
+                    ,
+                    {
+                        field: 'Place', title: '位置', sort: true, templet: function (d) {
+                            return d.ClientCode ? d.ClientCode + '号终端;序号' + (d.Place ? d.Place : '') : ''
+                        }
+                    },
+                ]]
+                , page: {
+                    layout: ['count', 'prev', 'page', 'next',] //自定义分页布局
+                    , prev: '上一页'
+                    , next: '下一页'
+                },
+                where: {key_id: $('#key_id').val()}
+                , limit: 15
+                , limits: [10, 15, 20, 25, 30]
+                , height: 'full-15'
+            });
+        });
+
+
+    </script>
+
+{% endblock %}

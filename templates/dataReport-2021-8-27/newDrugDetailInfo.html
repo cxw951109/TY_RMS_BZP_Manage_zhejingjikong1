@@ -1,0 +1,425 @@
+{% extends 'baseBZP.html' %}
+
+{% block content %}
+
+{% load static %}
+<div class="layui-fluid">
+    <div class="layui-card">
+      <div class="layui-form layui-card-header layuiadmin-card-header-auto">
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">药柜</label>
+                <div class="layui-input-block">
+                    <select data-placeholder="选择所属药柜..." id="cabinetSelect" name="interest" lay-filter="aihao">
+                        <option value="">全部</option>
+                        {% for client in client_lists%}
+                            <option value="{{client.ClientId}}">{{client.ClientName}}</option>
+                        {% endfor %}
+                      </select>
+                </div>
+              </div>
+              <div class="layui-inline">
+                <label class="layui-form-label">药剂名称</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" id="searchValue" ReserveSearch='' name="searchValue" placeholder="药剂名称">
+                </div>
+              </div>
+
+              <div class="layui-inline" style="height: 42px;">
+                  <button type="button" class="layui-btn layuiadmin-btn-useradmin" data-type="btnTableSearch">
+                    <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                  </button>
+                </div>
+        </div>
+      </div>
+      <div class="layui-card-body">
+        <div style="padding-bottom: 10px;">
+            <a href="{% url 'dataReport:index' %}" class="layui-btn">返回统计目录</a>
+<button type="button" class="layui-btn layuiadmin-btn-useradmin" data-type="btnTableReload" style="margin-right:3px;" data-toggle="tooltip" data-placement="left" title="刷新统计列表"><i class="fa fa-refresh" aria-hidden="true"></i>刷新</button>
+
+            <button type="button" class="layui-btn layuiadmin-btn-useradmin" data-type="btnTableExport" style="margin-right:3px;" data-toggle="tooltip" data-placement="left" title="导出报表"><i class="fa fa-sign-out" aria-hidden="true"></i>导出报表</button>
+        </div>
+        
+        <table id="demo" lay-filter="test" lay-data="{id: 'idTest'}"></table>
+
+      </div>
+    </div>
+</div>
+
+{% load static %}
+    <script src="{% static 'js/fileDownload.js' %}"></script>
+            <script src="{% static 'js/warning.js' %}"></script>
+
+<script type="text/javascript">
+    layui.use('form', function () {
+        var form = layui.form;
+        form.render(); //刷新select选择框渲染
+        });
+    var table = layui.table;
+    let dataTable = []
+    //执行渲染
+    table.render({
+        elem: '#demo', //指定原始表格元素选择器（推荐id选择器）
+        // height: 312, //容器高度
+        cols: [
+            [{type: 'checkbox', fixed: 'left'},{ field: 'BarCode', title: '条剂编码', width: 220, sort: true },
+            { field: 'Remark1', title: '申购单编号', width: 220, sort: true },
+            { field: 'Remark2', title: '采购单编号', width: 220, sort: true },
+            { field: 'Remark3', title: '药剂类别', width: 110, sort: true },
+            { field: 'Remark4', title: '所属项目', width: 110, sort: true },
+            { field: 'Name', title: '药剂名称', width: 280, sort: true },
+            { field: 'EnglishName', title: '英文名称', width: 240, sort: true },
+            { field: 'CASNumber', title: 'CAS码', width: 240, sort: true },
+            { field: 'Remain', title: '药剂余量(g)', width: 110, sort: true },
+            { field: 'Speci', title: '药剂规格', width: 110, sort: true },
+            { field: 'Purity', title: '纯度', width: 110, sort: true },
+            { field: 'ProductionDate', title: '生产日期', width: 140, sort: true },
+            { field: 'PutInDate', title: '入库时间', width: 280, sort: true },
+            { field: 'IsSupervise', title: '是否监管', width: 110, sort: true },
+            { field: 'Status', title: '状态', width: 110, sort: true, templet: function (d) {
+        switch (d.Status) {
+            case 1:
+                return "在库";
+            case 2:
+                return "出库";
+            case 3:
+                return "空瓶";
+            case 5:
+                return "预备入库";
+            default:
+                return "异常"
+        }
+}},
+            { field: 'ByUserName', title: '最后使用人', width: 110, sort: true },
+            { field: 'Place', title: '位置', width: 500, sort: true , templet: function(d){
+                return d.ClientCode ? d.ClientCode + '号终端' + (d.Place ? d.Place : '') : ''
+            }},
+            ]
+        ], //设置表头
+        url:'/dataReport/drug_GetDrugListJson/',
+        id: "test",
+        page: {
+          layout: [ 'count', 'prev', 'page', 'next',], //自定义分页布局
+          prev:'上一页',
+          next:'下一页'
+         },
+        limit: 15,
+        limits: [10, 15, 20, 25, 30],
+        height: 'full-160',
+        size:'lg',
+
+        done: function (res, curr, count) {
+        },
+    });
+    
+    var active = {
+        btnTableSearch: function () {
+            table.reload('test', {
+            where: { //设定异步数据接口的额外参数，任意设
+                searchValue:  $("#searchValue").val(),
+                clientId:  $('#cabinetSelect option:selected').val()
+                //…
+            },page: {
+                curr: 1 //重新从第 1 页开始
+            }
+        }) //只重载数据
+        },
+        btnTableReload: function(){
+            location.reload();
+        },
+        btnTableExport: function(){
+            var index = '';
+            var url = '/dataReport/exportDrugShelfLifeData/?searchValue='+ $("#searchValue").val();
+            var index = parent.layer.load(2,{time: 3*1000});
+            var visitType=window.parent.frames.getUrlParam('visitType');
+            if(((visitType=='1') || (visitType=='2')))
+            {
+                $.get(url+"&visitType=1", function (obj) {
+                                parent.layer.close(index);
+                                if (obj.status == 0) {
+                                    layer.alert('导出成功！', {time:1500,btn:[],title:""});
+                                    tableModel.row('.selected').remove().draw(false);
+                                    return false;
+                                }
+                                else {
+                                    layer.alert(obj.message, {time:1500,btn:[],title:""});
+                                    return false;
+                                }
+                            });
+                        }
+                        else{
+                            $.fileDownload(url, {
+                                httpMethod: 'GET',
+                                prepareCallback: function (url) {
+                                    index = parent.layer.load(2,{time: 3*1000});
+                                },
+                                successCallback: function (url) {
+                                    parent.layer.close(index)
+                                },
+                                failCallback: function (url) {
+                                    msg('数据异常, 下载失败');
+                                    parent.layer.close(index)
+                                }
+                            });
+                }
+        },
+
+    };
+
+    $('.layui-btn.layuiadmin-btn-useradmin').on('click', function () {
+        var type = $(this).data('type');
+        active[type] ? active[type].call(this) : '';
+    });
+    
+
+
+    $(function () {
+        // $.get('{% url 'dataReport:getClientListJson' %}', function (obj) {
+        //     $(obj.data).each(function (index, data) {
+        //         $("#cabinetSelect").append("<option value='" + data.ClientId + "' hassubinfo='true'>" + data.ClientName+ "</option>");
+        //     });
+        //     $(".chosen-select").chosen({
+        //         no_results_text: "没有找到",
+        //         disable_search: true,
+        //         allow_single_deselect: true
+        //     });
+        // });
+        $('#navTitle', window.parent.document).text('药剂数据');
+        var searchValue = $("#searchValue").val();
+
+        $("#searchValue").val(searchValue);
+        var tableModel = $('#dataTableModel').DataTable({
+            searching: false,
+            lengthChange: false,
+            select: true,
+            "ordering": false,
+            ajax: {
+                url: "{% url 'drug_GetDrugListJson' %}",
+                data: {},
+                dataSrc: 'data'
+            },
+            columns: [
+            { data: 'BarCode' },
+            { data: 'Remark1' },
+            { data: 'Remark2' },
+            { data: 'Remark3' },
+            { data: 'Remark4' },
+            { data: 'Name' },
+            { data: 'EnglishName' },
+            { data: 'CASNumber' },
+            { data: 'Remain' },
+            { data: 'Speci' },
+            { data: 'Purity' },
+            { data: 'ProductionDate' },
+            { data: 'PutInDate' },
+            { data: 'IsSupervise' },
+            { data: 'Status' },
+            { data: 'ByUserName' },
+            { data: 'Place' }
+            ],
+            "order": [[6, "desc"]],
+            createdRow: function (row, data, dataIndex) {
+
+                $(row).children('td').eq(0).html("<span class='label label-info'>" + data.BarCode + "</span>");
+                $(row).children('td').eq(13).html(data.IsSupervise == 1 ? "<span class='label label-warning'>是</span>" : "<span class='label label-default'>否</span>");
+                $(row).children('td').eq(13).attr('style', 'text-align: center;');
+                $(row).children('td').eq(14).attr('style', 'text-align: center;');
+                $(row).children('td').eq(14).html(judge_drugStatus(data.Status));
+                $(row).children('td').eq(16).html(data.ClientCode?data.ClientCode + '号终端' + (data.Place?data.Place:''):'')
+                $(row).children('td').eq(9).html(data.Speci+' '+data.SpeciUnit);
+            },
+        });
+
+
+        $("#btnTableEdit").click(function () {
+            var selectRow = tableModel.row('.selected').data();
+
+            if (selectRow == null) {
+                layer.msg("请选择要编辑的数据！");
+                return;
+            }
+            quiteTime = Infinity;
+            parent.layer.open({
+                title: "编辑药剂",
+                shift: 2,
+                type: 2,
+                area: ['860px', '550px'],
+                //skin: 'layui-layer-rim', //加上边框
+                content: ["/drug/" + selectRow.MedicamentId + '/form/'],
+                end: function () {
+                    currentTime = 0;
+                    quiteTime = 600;
+                    tableModel.ajax.reload();
+                }
+            });
+        });
+
+
+        $('.chosen-select').on('change', function (e, params) {
+            tableModel.ajax.url('/dataReport/drug_GetDrugListJson/?searchValue='+ $("#searchValue").val()+'&clientId='+$('.chosen-select').val()).load();
+            console.log('药柜')
+            tableModel.draw();
+        });
+        $("#searchValue").keyup(function () {
+            //mxh_后端进行搜索
+            tableModel.ajax.url('/dataReport/drug_GetDrugListJson/?searchValue='+ $("#searchValue").val()+'&clientId='+$('.chosen-select').val()).load();
+            $("#searchValue").attr('ReserveSearch', $("#searchValue").val());
+
+            tableModel.search($("#searchValue").val()).draw();
+
+        })
+
+
+        $("#btnTableSetEmpty").click(function(){
+            var selectRow = tableModel.row('.selected').data();
+            if (selectRow == null) {
+                layer.msg("请选择要设置空瓶的数据！");
+                return;
+            }
+
+             new $.flavr({
+                content: '确定要将药剂<p style="line-height:30px;color:red;font-size:20px;">"' + selectRow.Name + '"设为空瓶么?</p>',
+                dialog: 'confirm',
+                buttons: {
+                    danger: {
+                        text: '确定',
+                        style: 'danger',
+                        action: function() {
+                            $.post("{% url 'drug:setDrugEmpty' %}", { MedicamentId: selectRow.MedicamentId }, function (obj) {
+                                if (obj.status == 1) {
+                                    new $.flavr({ content : '设置成功！',
+                                    autoclose : true, timeout : 800 });
+                                    tableModel.row('.selected').remove().draw(false);
+                                    return false;
+                                }
+                                else {
+                                    new $.flavr({ content : obj.message,
+                                    autoclose : true, timeout : 2000 });
+                                    return false;
+                                }
+                            })
+                        }
+                    },
+                    cancel: {
+                        text: '取消',
+                        style: 'default'
+                    }
+                },
+            });
+
+        });
+        $("#btnTableDrugRecord").click(function () {
+            var selectRow = tableModel.row('.selected').data();
+            if (selectRow == null) {
+                layer.msg("请选择要查看的数据！");
+                return;
+            }
+            quiteTime = Infinity;
+            parent.layer.open({
+                title: "药剂“" + selectRow.BarCode + "”的流转记录",
+                shift: 2,
+                type: 2,
+                area: ['960px', '580px'],
+                //skin: 'layui-layer-rim', //加上边框
+                content: ['/home/homeDrugRecord/?BarCode=' + selectRow.BarCode],
+                end: function () {
+                    currentTime = 0;
+                    quiteTime = 600;
+                    tableModel.ajax.reload();
+                }
+            });
+        });
+
+        $("#btnTableDelete").click(function () {
+            var selectRow = tableModel.row('.selected').data();
+            if (selectRow == null) {
+                layer.msg("请选择要删除的数据！");
+                return;
+            }
+
+             new $.flavr({
+                content: '确定要删除药剂<p style="line-height:30px;color:red;font-size:20px;">"' + selectRow.Name + '"?</p>',
+                dialog: 'confirm',
+                buttons: {
+                    danger: {
+                        text: '确定',
+                        style: 'danger',
+                        action: function() {
+                            $.post("{% url 'drug:deleteDrug' %}", { MedicamentId: selectRow.MedicamentId }, function (obj) {
+                                if (obj.status == 1) {
+                                    new $.flavr({ content : '删除成功！',
+                                    autoclose : true, timeout : 800 });
+                                    tableModel.row('.selected').remove().draw(false);
+                                    return false;
+                                }
+                                else {
+                                    new $.flavr({ content : obj.message,
+                                    autoclose : true, timeout : 2000 });
+                                    return false;
+                                }
+                            })
+                        }
+                    },
+                    cancel: {
+                        text: '取消',
+                        style: 'default'
+                    }
+                },
+            });
+        });
+
+        //  分配使用用户
+        $("#btnTableQx").click(function () {
+            var selectRow = tableModel.row('.selected').data();
+            if (selectRow == null) {
+                layer.msg("请选择要分配用户的终端！");
+                return;
+            }
+            quiteTime = Infinity;
+            parent.layer.open({
+                title: "分配药剂禁止使用用户- 药剂名称：" + selectRow.Name,
+                shift: 2,
+                type: 2,
+                area: ['860px', '520px'],
+                skin: 'layui-layer-rim', //加上边框
+                content: ["/drug/disabled_user/?barcode=" + selectRow.BarCode, 'no'],
+                end: function () {
+                    currentTime = 0;
+                    quiteTime = 600;
+                    tableModel.ajax.reload();
+                }
+            });
+        });
+        $("#tablePre").click(function () {
+            $("#dataTableModel_previous").click();
+
+        });
+
+        $("#tableNext").click(function () {
+            $("#dataTableModel_next").click();
+
+        })
+    });
+    //
+    function judge_drugStatus(status) {
+        switch (status) {
+            case 1:
+                return "在库";
+            case 2:
+                return "出库";
+            case 3:
+                return "空瓶";
+            case 5:
+                return "预备入库";
+            default:
+                return "异常"
+        }
+}
+
+
+
+
+</script>
+<iframe width=0 height=0 frameborder=0 id="export" />
+
+{% endblock %}

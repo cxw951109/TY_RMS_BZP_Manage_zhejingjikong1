@@ -1,0 +1,253 @@
+{% extends 'baseBZP.html' %} {% block content %} {% load static %}
+    <style type="text/css">
+        body {
+            background-color: #FFF !important;
+        }
+
+        th, td {
+            white-space: nowrap;
+        }
+
+        .keyCabinetBox {
+            width: 1000px;
+            display: flex;
+        }
+
+        .keyCabinetBox ul {
+            width: 700px;
+            height: 430px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .keyCabinetBox li {
+            width: 135px;
+            height: 80px;
+            line-height: 80px;
+            text-align: center;
+            background-color: green;
+            border-radius: 30px;
+            /* margin-right: 5px; */
+            color: #FFF;
+            font-size: 20px;
+            cursor: pointer;
+            border: 1px solid #000000;
+        }
+
+
+        .keyCabinetBox .keyCabinetTitle {
+            text-align: center;
+            line-height: 30px;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .keyCabinetBox .keyCabinetTitle input {
+            text-align: center;
+        }
+
+        .flowList {
+            width: 280px;
+            background-color: rgb(223, 223, 215);
+            border-radius: 5px;
+            margin-left: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: center;
+        }
+
+        .flowList .flowItem {
+            height: 60px;
+            line-height: 60px;
+            font-size: 20px;
+            width: 200px;
+            text-align: center;
+            background-color: #ffffff;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .flowItemHover {
+            background-color: #1E9FFF !important;
+            color: #FFFFFF !important;
+        }
+
+        .cabinetTitle {
+            line-height: 90px;
+            font-size: 20px;
+            color: gray;
+        }
+
+    </style>
+    <div class="layui-fluid" style="padding: 0 !important;">
+        <div class="layui-card">
+
+            <div class="layui-card-body">
+                <div class="layui-bg-black" id="scanBox" style="font-size: 18px;text-align: center; line-height: 35px;">
+                    <div id="complete"></div>
+                    <div class="materialOperaTip">请领用人扫描试剂条码进行领用</div>
+                    <div><span>已扫描领用数量：<span class="totalCount">0</span></span>
+                    </div>
+
+                </div>
+                <table id="LAY-datatable" lay-filter="LAY-datatable"></table>
+            </div>
+        </div>
+    </div>
+    <div id="selectGuizi" style="overflow: hidden;" hidden>
+        <form class="layui-form" lay-filter="layuiadmin-form-admin" id="layuiadmin-form-admin"
+              style="padding: 20px 0 0 100px;">
+            <div style="display: flex; justify-content: center;width: 100%">
+                <div class="keyCabinetBox">
+                    <div class="flowList">
+                        <div class="cabinetTitle">柜体位置</div>
+                        <div class="flowItem" id="1层">1层</div>
+                        <div class="flowItem" id="2层">2层</div>
+                        <div class="flowItem" id="3层">3层</div>
+                        <div class="flowItem" id="4层">4层</div>
+                        <div class="flowItem" id="5层">5层</div>
+                        <div class="flowItem" id="6层">6层</div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+    <script>
+        function array_difference(a, b) { // 差集 a - b
+            var result = a.concat(b).filter(function (v) {
+                return b.indexOf(v) === -1
+            });
+            return result
+
+        }
+
+        var totalCount = 0;
+        layui.use(['index', 'table'], function () {
+            var $ = layui.$,
+                table = layui.table,
+                form = layui.form;
+            // $("#scanInput").focus();
+            var tableData = JSON.parse(localStorage.getItem("materialUseList"));
+            console.log(tableData);
+            //列表数据
+            table.render({
+                elem: '#LAY-datatable',
+                data: tableData,
+                size: 'lg',
+                cols: [
+                    [{
+                        type: 'numbers',
+                        unresize: true,
+                        title: '序号'
+                    }, {
+                        field: 'BarCode',
+                        width: 200,
+                        title: '条码编号'
+                    }, {
+                        field: 'Name',
+                        width: 200,
+                        title: '试剂名称'
+                    }, {
+                        field: 'CASNumber',
+                        title: 'CAS码',
+                        width: 120
+                    }, {
+                        field: 'Purity',
+                        title: '纯度',
+                        width: 100
+                    }, {
+                        field: 'Speci',
+                        title: '试剂规格',
+                        width: 100
+                    }, {
+                        field: 'SpeciUnit',
+                        title: '规格单位',
+                        width: 100
+                    }, {
+                        field: 'Remain',
+                        title: '质量（g）',
+                        width: 100
+                    }, {
+                        field: 'Place',
+                        title: '位置',
+                        minWidth: 200
+                    }]
+                ],
+                page: false,
+                limit: 10000,
+                limits: [10, 15, 20, 25, 30],
+                height: 'full-120',
+                done: function (res, curr, count) {
+                    $('#LAY-datatable').next().find('.layui-table-body').find("table").find("tbody").children("tr").on('dblclick', function () {
+                        var id = JSON.stringify($('#LAY-datatable').next().find('.layui-table-body').find("table").find("tbody").find(".layui-table-hover").data('index'));
+                        var obj = res.data[id];
+                        $(".flowItem").removeClass("flowItemHover");
+                        $("#" + obj.Place).addClass("flowItemHover");
+                        //fun.openLayer(obj);
+                        layer.open({
+                            type: 1,
+                            {#shade: false,#}
+                            title: '编号：' + obj.BarCode + '；的位置示意图',//不显示标题
+                            area: ['500px', '600px'], //宽高
+                            content: $('#selectGuizi'), //捕获的元素，注意：最好该指定的元素要存放在body最外层，否则可能被其它的相对元素所影响
+                            cancel: function () {
+                            }
+                        });
+                    })
+                }
+            });
+
+            window.focus(); // 当前页面获得焦点用来RFID扫描
+            //挂钩jquery插件，实现条码识别
+            $(document).barCodeScanerModeEnter(function (barCode) {
+                var scanList = tableData.filter(function (x) {
+                    return x.BarCode == barCode
+                });
+                if (scanList.length == 0) {
+                    LayerErrorMsg("列表中无此试剂！");
+                    return;
+                }
+                var waitUseMIDList = JSLINQ(scanList).Select("MedicamentId").toArray();
+                console.log("waitUseMIDList:", waitUseMIDList);
+                var loadIndex = LayerLoadMsg("正在执行");
+                $.ajax({
+                    type: 'POST',
+                    url: '{% url 'Hazardous:HazardousUseView' %}',
+                    data: {
+                        drugId: waitUseMIDList.join(',')
+                    },
+                    success: function (data) {
+                        layer.close(loadIndex);
+                        if (data.status == 0) {
+                            totalCount += scanList.length;
+                            $(".totalCount").text(totalCount);
+                            tableData = array_difference(tableData, scanList);
+                            table.reload('LAY-datatable', {
+                                data: tableData
+                            });
+                            if (tableData.length == 0) {
+                                $(".layui-table-view").hide();
+                                $("#complete").css("height", "180px");
+                                $("#scanBox").css("height", "480px").removeClass("layui-bg-black").addClass("layui-bg-green");
+                                $(".materialOperaTip").text("领用完成").css("font-size", "22px")
+                            }
+
+                        } else {
+                            LayerErrorMsg("领用失败" + data.message);
+
+                        }
+                    },
+                    error: function () {
+                        alert('数据异常！');
+                        layer.close(loadIndex);
+                    }
+                });
+            });
+
+        });
+    </script>
+    <iframe width=0 height=0 frameborder=0 id="export"/> {% endblock %}

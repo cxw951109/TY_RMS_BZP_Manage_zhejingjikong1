@@ -1,0 +1,312 @@
+{% extends 'baseBZPForm.html' %}
+
+{% block content %}
+    {% load static %}
+
+    <form class="layui-form" lay-filter="layuiadmin-form-admin" id="layuiadmin-form-admin"
+          style="padding: 20px 30px 0 0;">
+        <input name="Id" type="hidden" value="{{ key_obj.Id }}"/>
+        <div class="layui-form-item">
+            <label class="layui-form-label">条码编号*</label>
+            <div class="layui-input-inline">
+                <input style="background-color: #f2f2f2;" type="text" name="BarCode" readonly
+                       value="{% firstof key_obj.BarCode '' %}" id="BarCode"
+                       lay-verify="required" placeholder="条码编号" autocomplete="off"
+                       class="layui-input" disabled>
+            </div>
+            <div class="layui-btn-container">
+                <button type="button" class="layui-btn layui-btn-primary" id="btnPhotograph">扫描识别</button>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">钥匙名称*</label>
+            <div class="layui-input-inline">
+                <input type="text" name="Name" value="{% firstof key_obj.Name '' %}" lay-verify="required"
+                       placeholder="请输入钥匙名称" autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">位置序号*</label>
+            <div class="layui-input-inline">
+                <input type="text" name="Place" value="{% firstof key_obj.Place '' %}" lay-verify="required"
+                       placeholder="请输入位置序号" autocomplete="off" id="Place" disabled style="background-color: #f2f2f2;"
+                       class="layui-input">
+            </div>
+            <div class="layui-btn-container">
+                <button type="button" class="layui-btn layui-btn-primary" id="catPlace">选择终端位置序号</button>
+            </div>
+        </div>
+
+        {#    <div class="layui-form-item">#}
+        {#        <label class="layui-form-label">证书图片</label>#}
+        {#        <div class="layui-input-inline" style="width:290px">#}
+        {#            <input type="text" name="ImageUrl" id="ImageUrl" readonly value="{% firstof drug_obj.ImageUrl '' %}"  placeholder="请上传证书图片" autocomplete="off"#}
+        {#                class="layui-input">#}
+        {##}
+        {#        </div>#}
+        {#        <div class="layui-btn-container">#}
+        {#            <button type="button" class="layui-btn layui-btn-primary" id="btnPhotograph">拍照上传</button>#}
+        {#            <button type="button" class="layui-btn layui-btn-primary" id="btnViewPicture" >查看图片</button>#}
+        {#        </div>#}
+        {#    </div>#}
+
+        <div class="layui-form-item">
+            <div class="layui-inline will-hide">
+                <label class="layui-form-label">存储终端*</label>
+                <div class="layui-input-block">
+                    <select name="clientId" id="clientId" lay-verify="required"
+                            data-value="{% firstof key_obj.ClientId '' %}">
+                        <option value="">--请选择--</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline will-hide">
+                <label class="layui-form-label">管理终端</label>
+                <div class="layui-input-block">
+                    <select name="CorrespondingClientId" id="CorrespondingClientId"
+                            data-value="{% firstof key_obj.CorrespondingClientId '' %}">
+                        <option value="">--请选择--</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline will-hide">
+                <label class="layui-form-label">状态*</label>
+                <div class="layui-input-block">
+                    <select name="Status" id="Status" lay-verify="required"
+                            data-value="{% firstof key_obj.Status '' %}">
+                        {#                        <option value="">--请选择--</option>#}
+                        <option value="5">待绑定</option>
+                        <option value="1">在库</option>
+                        <option value="2">出库</option>
+
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item layui-hide">
+            <input type="button" lay-submit lay-filter="LAY-user-front-submit" id="LAY-user-front-submit" value="确认">
+        </div>
+    </form>
+    <div id="approveContent" class="layui-hide">
+        <style>
+            #approveContentTable .laytable-cell-1-0-1 {
+                width: 230px !important;
+            }
+        </style>
+        <table class="layui-hide" id="approveContentTable" lay-filter="approveContentTable"></table>
+    </div>
+    <div id="selectGuizi" style="overflow: hidden;" class="layui-container" hidden>
+        <div style="font-size: 25px; text-align: center; line-height: 50px; height: 50px;margin-bottom: 10px">
+            钥匙管理柜序号位置示意图
+        </div>
+        <div style="display: flex; justify-content: center;width: 100%">
+            <div class="layui-row layui-col-space1">
+                <div class="layui-col-md2 flowItem" id="1">1</div>
+                <div class="layui-col-md2 flowItem" id="6">6</div>
+                <div class="layui-col-md2 flowItem" id="11">11</div>
+                <div class="layui-col-md2 flowItem" id="16">16</div>
+            </div>
+            <div class="layui-row layui-col-space1">
+                <div class="layui-col-md2 flowItem" id="2">2</div>
+                <div class="layui-col-md2 flowItem" id="7">7</div>
+                <div class="layui-col-md2 flowItem" id="12">12</div>
+                <div class="layui-col-md2 flowItem" id="17">17</div>
+            </div>
+            <div class="layui-row layui-col-space1">
+                <div class="layui-col-md2 flowItem" id="3">3</div>
+                <div class="layui-col-md2 flowItem" id="8">8</div>
+                <div class="layui-col-md2 flowItem" id="13">13</div>
+                <div class="layui-col-md2 flowItem" id="18">18</div>
+            </div>
+            <div class="layui-row layui-col-space1">
+                <div class="layui-col-md2 flowItem" id="4">4</div>
+                <div class="layui-col-md2 flowItem" id="9">9</div>
+                <div class="layui-col-md2 flowItem" id="14">14</div>
+                <div class="layui-col-md2 flowItem" id="19">19</div>
+            </div>
+            <div class="layui-row layui-col-space1">
+                <div class="layui-col-md2 flowItem" id="5">5</div>
+                <div class="layui-col-md2 flowItem" id="10">10</div>
+                <div class="layui-col-md2 flowItem" id="15">15</div>
+                <div class="layui-col-md2 flowItem" id="20">20</div>
+            </div>
+        </div>
+    </div>
+    <style>
+        .flowItem {
+            height: 60px;
+            line-height: 60px;
+            font-size: 20px;
+            text-align: center;
+            margin-bottom: 10px;
+            cursor: pointer;
+            width: 180px;
+            background-color: rgb(223, 223, 215);
+            border-radius: 5px;
+            margin-left: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: center;
+        }
+
+        .flowItem:hover {
+            background-color: #1E9FFF !important;
+            color: #FFFFFF !important;
+        }
+
+        .flowItemSelect {
+            background-color: #3611bd !important;
+            color: #FFFFFF !important;
+        }
+
+
+    </style>
+    <script>
+
+        var updateData = [];
+        var table = null;
+        layui.use(['table', 'form'], function () {
+            table = layui.table;
+            var form = layui.form;
+            $.get("{% url 'cabinet:getSelectClientListJson' %}", {}, function (obj) {
+                $(obj).each(function (index, data) {
+                    $("#clientId").append("<option value='" + data.value + "'>" + data.name + "</option>");
+                    $("#CorrespondingClientId").append("<option value='" + data.value + "'>" + data.name + "</option>");
+                });
+                $("#clientId option[value=" + $('#clientId').data('value') + "]").prop("selected", true);
+                $("#CorrespondingClientId option[value=" + $('#CorrespondingClientId').data('value') + "]").prop("selected", true);
+                $("#Status option[value=" + $('#Status').data('value') + "]").prop("selected", true);
+                console.log($('#Status').data('value'), '1111111111111')
+                form.render('select');
+            });
+            table.render({
+                elem: '#approveContentTable'
+                , data: updateData
+                , height: 280
+                , cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+                , defaultToolbar: []
+                , title: '用户数据表'
+                , cols: [[
+                    {type: 'numbers'}
+                    , {field: 'updateField', width: 150, title: '修改项'}
+                    , {field: 'oldValue', width: 200, title: '原始值'}
+                    , {field: 'newValue', width: 200, title: '修改值'}
+                ]]
+            });
+        });
+    </script>
+    <script>
+        var xxxIndex = "";
+        var index = parent.layer.getFrameIndex(window.name);
+        var staticPath = "{% static '/' %}";
+        layui.use(['index', 'form'], function () {
+            var model = {};
+            var modelArray = $("#layuiadmin-form-admin").serializeArray();
+            $.each(modelArray, function () {
+                model[this.name] = this.value;
+            });
+            var form = layui.form;
+            form.on('submit(LAY-user-front-submit)', function (obj) {
+                updateData = [];
+                var Status = $("#Status").val();
+                var CorrespondingClientId = $("#CorrespondingClientId").val();
+                if (Status != "5" && !CorrespondingClientId) {
+                    layer.msg("请为钥匙绑定管理终端");
+                    return false;
+                }
+                var fieldData = obj.field;
+                var updateCount = 0;
+                for (var key in fieldData) {
+                    if (key == "Description") {
+                        continue;
+                    }
+                    if (fieldData[key] != model[key]) {
+                        updateCount += 1;
+                        var fieldName = $("input[name=" + key + "]").parent().prev().text();
+                        updateData.unshift({
+                            "updateField": fieldName,
+                            "oldValue": model[key],
+                            "newValue": fieldData[key]
+                        })
+                        table.reload('approveContentTable', {data: updateData});
+                    }
+
+                }
+                if (updateCount == 0) {
+                    layer.msg("未做任何更改，不能提交申请！");
+                    return false;
+                }
+                fieldData.approveContent = $("#approveContent").html();
+                //提交修改
+                $.post("{% url 'Hazardous:key_form' %}", fieldData, function (obj) {
+                    if (obj.status == 1) {
+                        msg("保存成功", function () {
+                            parent.layer.close(index);
+                        });
+                    } else {
+                        msg("保存失败:" + obj.message);
+                    }
+                });
+                return false;
+            });
+
+            $("#btnPhotograph").click(function () {
+                top.layer.open({
+                    type: 2
+                    , title: '请扫描条码'
+                    , content: "{% url 'Hazardous:key_barCode' %}"
+                    , area: ['800px', '630px']
+                    {#, shade: [0.1, '#000']#}
+                    , offset: '30px'
+                    {#, btn: ['保存', '取消']#}
+                    , end: function () {
+                        var barCode = sessionStorage.getItem("barCode_");
+                        if (barCode != null) {
+                            $('#BarCode').val(barCode);
+                            sessionStorage.removeItem("barCode_")
+                        }
+                    }
+                });
+            });
+            $("#catPlace").click(function () {
+                let place = $("#Place").val()
+                $(".flowItem").removeClass("flowItemSelect");
+                $("#" + place).addClass("flowItemSelect");
+                xxxIndex = layer.open({
+                    type: 1,
+                    {#shade: false,#}
+                    title: '位置序号示意图',//不显示标题
+                    area: ['1000px', '400px'], //宽高
+                    content: $('#selectGuizi'), //捕获的元素，注意：最好该指定的元素要存放在body最外层，否则可能被其它的相对元素所影响
+                    cancel: function () {
+                    }
+                });
+            })
+            $(".flowItem").click(function () {
+                var place = $(this).text();
+                layer.close(xxxIndex);
+                if (place) {
+                    $("#Place").val(place);
+                }
+            })
+            $("#btnViewPicture").click(function () {
+                layer.photos({
+                    photos: {"data": [{"src": $("#ImageUrl").val()}]}
+                    , offset: 'auto'
+                });
+            });
+            window.get_barCode = function (data) {
+                if (data !== "") {
+                    //将子页面传来的值赋值到指定输入框
+                    $('#BarCode').val(data);
+                }
+            }
+        })
+    </script>
+{% endblock %}

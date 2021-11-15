@@ -1,0 +1,84 @@
+具体时间:[2021-03-24 02:38:39,750][default:INFO(22)]
+当前文件位置:[/home/yanyi/Project/MainManage/ServerData/user/login_required.py]模块名:[login_required:]函数名:[process_request]:
+[第22行]-用户没有登录, 跳转到登录页面
+
+具体时间:[2021-03-24 02:38:41,362][default:INFO(22)]
+当前文件位置:[/home/yanyi/Project/MainManage/ServerData/user/login_required.py]模块名:[login_required:]函数名:[process_request]:
+[第22行]-用户没有登录, 跳转到登录页面
+
+具体时间:[2021-03-24 02:42:57,991][default:INFO(184)]
+当前文件位置:[/home/yanyi/Project/MainManage/ServerData/TY_RMS_Multiple_Manage/views.py]模块名:[views:]函数名:[account_login]:
+[第184行]-登录成功
+
+具体时间:[2021-03-24 02:43:10,225][default:INFO(22)]
+当前文件位置:[/home/yanyi/Project/MainManage/ServerData/user/login_required.py]模块名:[login_required:]函数名:[process_request]:
+[第22行]-用户没有登录, 跳转到登录页面
+
+具体时间:[2021-03-24 19:16:19,639][default:INFO(203)]
+当前文件位置:[/home/yanyi/Project/MainManage/ServerData/TY_RMS_Multiple_Manage/views.py]模块名:[views:]函数名:[account_login]:
+[第203行]-账号或密码不正确, 登录失败
+
+具体时间:[2021-03-24 19:16:22,145][default:INFO(22)]
+当前文件位置:[/home/yanyi/Project/MainManage/ServerData/user/login_required.py]模块名:[login_required:]函数名:[process_request]:
+[第22行]-用户没有登录, 跳转到登录页面
+
+具体时间:[2021-03-24 21:46:37,134][default:INFO(22)]
+当前文件位置:[/home/yanyi/Project/MainManage/ServerData/user/login_required.py]模块名:[login_required:]函数名:[process_request]:
+[第22行]-用户没有登录, 跳转到登录页面
+
+具体时间:[2021-03-24 21:46:38,658][default:INFO(22)]
+当前文件位置:[/home/yanyi/Project/MainManage/ServerData/user/login_required.py]模块名:[login_required:]函数名:[process_request]:
+[第22行]-用户没有登录, 跳转到登录页面
+
+具体时间:[2021-03-24 21:52:41,691][default:DEBUG(132)]
+当前文件位置:[/home/yanyi/Project/MainManage/ServerData/TY_RMS_Multiple_Manage/views.py]模块名:[views:]函数名:[main]:
+[第132行]-数据异常, 'NoneType' object has no attribute 'fetchone'
+
+具体时间:[2021-03-24 22:50:34,249][default:INFO(22)]
+当前文件位置:[/home/yanyi/Project/MainManage/ServerData/user/login_required.py]模块名:[login_required:]函数名:[process_request]:
+[第22行]-用户没有登录, 跳转到登录页面
+
+具体时间:[2021-03-24 22:50:34,456][default:INFO(22)]
+当前文件位置:[/home/yanyi/Project/MainManage/ServerData/user/login_required.py]模块名:[login_required:]函数名:[process_request]:
+[第22行]-用户没有登录, 跳转到登录页面
+
+具体时间:[2021-03-24 22:50:41,807][default:INFO(184)]
+当前文件位置:[/home/yanyi/Project/MainManage/ServerData/TY_RMS_Multiple_Manage/views.py]模块名:[views:]函数名:[account_login]:
+[第184行]-登录成功
+
+具体时间:[2021-03-24 23:38:36,940][default:INFO(22)]
+当前文件位置:[/home/yanyi/Project/MainManage/ServerData/user/login_required.py]模块名:[login_required:]函数名:[process_request]:
+[第22行]-用户没有登录, 跳转到登录页面
+
+具体时间:[2021-03-25 00:02:16,820][default:INFO(22)]
+当前文件位置:[/home/yanyi/Project/MainManage/ServerData/user/login_required.py]模块名:[login_required:]函数名:[process_request]:
+[第22行]-用户没有登录, 跳转到登录页面
+
+具体时间:[2021-03-25 00:02:27,863][default:INFO(184)]
+当前文件位置:[/home/yanyi/Project/MainManage/ServerData/TY_RMS_Multiple_Manage/views.py]模块名:[views:]函数名:[account_login]:
+[第184行]-登录成功
+
+具体时间:[2021-03-25 01:38:04,629][default:INFO(22)]
+当前文件位置:[/home/yanyi/Project/MainManage/ServerData/user/login_required.py]模块名:[login_required:]函数名:[process_request]:
+[第22行]-用户没有登录, 跳转到登录页面
+
+具体时间:[2021-03-25 02:02:40,804][default:INFO(22)]
+当前文件位置:[/home/yanyi/Project/MainManage/ServerData/user/login_required.py]模块名:[login_required:]函数名:[process_request]:
+[第22行]-用户没有登录, 跳转到登录页面
+
+具体时间:[2021-03-25 16:57:00,411][default:INFO(203)]
+当前文件位置:[/home/yanyi/Project/MainManage/ServerData/TY_RMS_Multiple_Manage/views.py]模块名:[views:]函数名:[account_login]:
+[第203行]-账号或密码不正确, 登录失败
+
+具体时间:[2021-03-25 16:57:02,874][default:INFO(22)]
+当前文件位置:[/home/yanyi/Project/MainManage/ServerData/user/login_required.py]模块名:[login_required:]函数名:[process_request]:
+[第22行]-用户没有登录, 跳转到登录页面
+
+具体时间:[2021-03-25 16:57:21,666][default:INFO(184)]
+当前文件位置:[/home/yanyi/Project/MainManage/ServerData/TY_RMS_Multiple_Manage/views.py]模块名:[views:]函数名:[account_login]:
+[第184行]-登录成功
+
+具体时间:[2021-03-25 16:57:31,752][default:INFO(22)]
+当前文件位置:[/home/yanyi/Project/MainManage/ServerData/user/login_required.py]模块名:[login_required:]函数名:[process_request]:
+[第22行]-用户没有登录, 跳转到登录页面
+

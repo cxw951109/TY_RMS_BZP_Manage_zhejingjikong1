@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta name="referrer" content="always">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <title>RMS药剂系统后台管理 - 主页</title>
+    <script type="text/javascript">
+
+    </script>
+    {% load static %}
+    <!--  <link rel="shortcut icon" href="favicon.ico"> -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/animate.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/plugins/icon/iconfont.css' %}" rel="stylesheet">
+    <link href="{% static 'plugins/virtualkeyboard/virtualkeyboard.css' %}" rel="stylesheet" />
+    <style>
+        .navbar-default::-webkit-scrollbar {
+            width: 1px;
+            height: 1px;
+        }
+    </style>
+</head>
+
+<body class="fixed-sidebar full-height-layout gray-bg animated fadeInUp" style="overflow:hidden">
+    <div id="wrapper">
+        <!--左侧导航开始-->
+        <nav class="navbar-default navbar-static-side" role="navigation" style="overflow-y: auto">
+            <div class="nav-header">
+                <div id="log-box" style="background-color:#1c84c6; height:60px;">
+                    <div
+                        style="color:#FFF;line-height:60px;font-size:18px;text-indent:15px;font-weight:bolder; white-space:nowrap;">
+                        RMS后台管理系统</div>
+                </div>
+                <div class="logo-element">
+                    RMS
+                </div>
+            </div>
+            <div class="dropdown profile-element leftUserInfo" style="padding-top:20px;padding-bottom:15px">
+                <span style="float:left;display:block;padding-top:3px;margin-left:15px">
+                    <img alt="image" style="width:35px;height:35px" id="avatar" class="img-circle"
+                        src="{% static 'Common/Images/user-avatar.png' %}" /></span>
+                <a href="" class="J_menuItem" style="display:block;float:left;margin-left:10px">
+                    <span class="clear">
+                        <span class="block m-t-xs"><strong class="font-bold">{{roleName}}</strong></span>
+                        <span class="text-muted text-xs block">{{user.RealName}}<b class="caret"
+                                style="display:none"></b></span>
+                    </span>
+                </a>
+                <div style="clear:both"></div>
+                <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                    <li>
+                        <a class="J_menuItem" href="{% url 'home:myInfo' %}" dtxt="个人资料" target="iframe0">基本信息</a>
+                    </li>
+                    <li>
+                        <a class="J_menuItem" href="{% url 'home:myInfo' %}" dtxt="个人资料" target="iframe0">修改密码</a>
+                    </li>
+                    <li>
+                        <a class="J_menuItem" href="{% url 'home:myInfo' %}" dtxt="个人资料" target="iframe0">设置头像</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="">安全退出</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="nav-close">
+                <i class="fa fa-times-circle"></i>
+            </div>
+            <div class="sidebar-collapse" style="font-size: 15px;">
+                <ul class="nav" id="side-menu">
+                    {% if roleName == "普通用户" %}
+
+                    <li>
+                        <a class="J_menuItem" href="{% url 'main' %}" dtxt="概况统计" target="iframe0"><i
+                                class="iconfont icon-HomePage"></i> <span class="nav-label">概况统计</span></a>
+                    </li>
+                    <li class="centerVisit">
+                        <a class="J_menuItem" href="{% url 'drug_scanBarCode' %}" dtxt="扫码查询" target="iframe0"><i
+                                class="iconfont icon-Barcode"></i> <span class="nav-label">扫码查询</span></a>
+                    </li>
+                    <li>
+                        <a class="J_menuItem" href="{% url 'drug_index' %}" dtxt="药剂信息" target="iframe0"><i
+                                class="fa fa-flask" style="font-size: 18px"></i> <span class="nav-label">药剂信息</span></a>
+                    </li>
+                    <li>
+                        <a class="J_menuItem" href="{% url 'drugTemplate_index' %}" dtxt="药剂入库" target="iframe0"><i
+                                class="iconfont icon-DrugIn"></i> <span class="nav-label">药剂入库</span></a>
+                    </li>
+                    <li class="centerVisit">
+                        <a class="J_menuItem" href="{% url 'drug:drugUseView' %}" dtxt="药剂领用" target="iframe0"><i
+                                class="iconfont icon-DrugIn"></i> <span class="nav-label">药剂领用</span></a>
+                    </li>
+                    <li class="centerVisit">
+                        <a class="J_menuItem" href="{% url 'drug:drugReturnView' %}" dtxt="药剂归还" target="iframe0"><i
+                                class="iconfont icon-DrugIn"></i> <span class="nav-label">药剂归还</span></a>
+                    </li>
+                    <li class="centerVisit">
+                        <a class="J_menuItem" href="{% url 'drug:drug_weigh' %}" dtxt="药剂称重" target="iframe0"><i
+                                class="iconfont icon-Weigh" aria-hidden="true"></i> <span
+                                class="nav-label">药剂称重</span></a>
+                    </li>
+                    <li>
+                        <a class="J_menuItem" href="{% url 'warning:index' %}" dtxt="预警信息" target="iframe0"><i
+                                class="iconfont icon-Warning"></i> <span class="nav-label">预警信息</span></a>
+                    </li>
+
+                    {% else %}
+
+                    <li>
+                        <a class="J_menuItem" href="{% url 'main' %}" dtxt="概况统计" target="iframe0"><i
+                                class="iconfont icon-HomePage"></i> <span class="nav-label">概况统计</span></a>
+                    </li>
+                    <li class="centerVisit">
+                        <a class="J_menuItem" href="{% url 'drug_scanBarCode' %}" dtxt="扫码查询" target="iframe0"><i
+                                class="iconfont icon-Barcode"></i> <span class="nav-label">扫码查询</span></a>
+                    </li>
+                    <li>
+                        <a class="J_menuItem" href="{% url 'drugTemplate_index' %}" dtxt="药剂入库" target="iframe0"><i
+                                class="iconfont icon-DrugIn"></i> <span class="nav-label">药剂入库</span></a>
+                    </li>
+                    <li class="centerVisit">
+                        <a class="J_menuItem" href="{% url 'drug:drugUseView' %}" dtxt="药剂领用" target="iframe0"><i
+                                class="iconfont icon-DrugIn"></i> <span class="nav-label">药剂领用</span></a>
+                    </li>
+                    <li class="centerVisit">
+                        <a class="J_menuItem" href="{% url 'drug:drugReturnView' %}" dtxt="药剂归还" target="iframe0"><i
+                                class="iconfont icon-DrugIn"></i> <span class="nav-label">药剂归还</span></a>
+                    </li>
+                    <li class="centerVisit">
+                        <a class="J_menuItem" href="{% url 'drug:drug_weigh' %}" dtxt="药剂称重" target="iframe0"><i
+                                class="iconfont icon-Weigh" aria-hidden="true"></i> <span
+                                class="nav-label">药剂称重</span></a>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0)" id="med-manager"><i class="iconfont icon-DrugSettings"></i> <span
+                                class="nav-label" target="iframe0">药剂管理</span></a>
+                        <ul class="nav nav-second-level" id="med-show" style="display: none">
+                            <li>
+                                <a class="J_menuItem" href="{% url 'drug_index' %}" dtxt="药剂数据"
+                                    target="iframe0">药剂数据</a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="{% url 'drug:drugTypeIndex' %}" dtxt="药剂类别"
+                                    target="iframe0">药剂类别</a>
+                            </li>
+                            <!--<li>-->
+                            <!--<a class="J_menuItem" href="~/Template/Index" dtxt="药剂模板" target="iframe0">药剂模板</a>-->
+                            <!--</li>-->
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a class="J_menuItem" href="{% url 'cabinet:index' %}" dtxt="药柜管理" target="iframe0"><i
+                                class="iconfont icon-Cabinet"></i> <span class="nav-label">药柜管理</span></a>
+                    </li>
+
+                    <li>
+                        <a class="J_menuItem" href="{% url 'warning:index' %}" dtxt="预警信息" target="iframe0"><i
+                                class="iconfont icon-Warning"></i> <span class="nav-label">预警信息</span></a>
+                    </li>
+
+                    <li>
+                        <a class="J_menuItem" href="{% url 'humiture:index' %}" dtxt="温度记录" target="iframe0"><i
+                                class="iconfont icon-Humiture"></i> <span class="nav-label">温度记录</span></a>
+                    </li>
+
+                    <li>
+                        <a class="J_menuItem" href="{% url 'dataReport:index' %}" dtxt="报表统计" target="iframe0"><i
+                                class="iconfont icon-ReportCount"></i> <span class="nav-label">报表统计</span></a>
+                    </li>
+
+                    <li>
+                        <a class="J_menuItem" href="{% url 'stockTaking:index' %}" dtxt="库存盘点" target="iframe0">
+                            {#                                    <i class="fa fa-university" aria-hidden="true"></i><span class="nav-label"> 库存盘点</span></a>#}
+                            <i class="iconfont icon-Repository" aria-hidden="true"></i><span class="nav-label"
+                                style="padding-top: -20px!important;"> 库存盘点</span></a>
+                    </li>
+
+                    <li>
+                        <a class="J_menuItem" href="{% url 'user:index' %}" dtxt="用户管理" target="iframe0"><i
+                                class="iconfont icon-UserManager"></i> <span class="nav-label">用户管理</span></a>
+                    </li>
+                    <li>
+                        <a class="J_menuItem" href="{% url 'log_index' %}" dtxt="日志数据" target="iframe0"><i
+                                class="iconfont icon-Log"></i> <span class="nav-label">日志数据</span></a>
+                    </li>
+                    <li>
+                        <a class="J_menuItem" href="http://localhost:8000/drug/danger/" dtxt="危险品查询" target="iframe0"><i
+                                class="iconfont icon-Log"></i> <span class="nav-label">危险品查询</span></a>
+                    </li>
+                    {% endif %}
+                    {% if roleName == "维护人员" %}
+
+                    <li>
+                        <a class="J_menuItem" href="{% url 'version:index' %}" dtxt="版本管理" target="iframe0"><i
+                                class="iconfont icon-VersionManager"></i> <span class="nav-label">版本管理</span></a>
+                    </li>
+                    <!-- <li>
+                                        <a class="J_menuItem" href="~/Module/Index" dtxt="模块管理" target="iframe0"><i class="fa fa-columns"></i> <span class="nav-label">模块管理</span></a>
+                                    </li>
+
+                                <li>
+                                    <a class="J_menuItem" href="~/ClientHelper/Index" dtxt="帮助资料" target="iframe0"><i class="fa fa-h-square"></i> <span class="nav-label">帮助资料</span></a>
+                                </li>
+
+                          <li>
+                                    <a class="J_menuItem" href="layouts.html"><i class="fa fa-hand-paper-o"></i> <span class="nav-label">权限管理</span></a>
+                                </li>-->
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+        <!--左侧导航结束-->
+        <!--右侧部分开始-->
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header">
+                        <!-- <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#">
+                            <i class="fa fa-bars"></i> </a> -->
+                        <form role="search" class="navbar-form-custom" method="post" action="">
+                            <div class="form-group">
+                                <div class="form-control"
+                                    style="line-height:45px;font-weight:100;color:#337ab7;font-size: 24px;"><span
+                                        id="navTitle">概况统计</span></div>
+                            </div>
+                        </form>
+                    </div>
+                    <ul class="nav navbar-top-links navbar-right">
+                        <li class="hidden-xs">
+
+                            {% if roleName == "普通用户" %}
+
+                            <a class="J_menuItem count-info warning-count" dtxt="我的预警信息" href="/warning/index?tag=1"
+                                target="iframe0">
+                                <i class="fa fa-bell"></i> <span class="label label-danger">{{ warning_nb }}</span>
+                            </a>
+                            {% else %}
+                            <a class="J_menuItem count-info warning-count" dtxt="预警管理" href="/warning/index?tag=1"
+                                target="iframe0">
+                                <i class="fa fa-bell"></i><span class="label label-danger"
+                                    id="war_number">{{ warning_nb }}</span>
+                            </a>
+
+                            {% endif %}
+
+                        </li>
+                        <li class="hidden-xs">
+                            <a href="{% url 'home:myInfo' %}" target="iframe0" class="J_menuItem"><i class="fa fa-user"
+                                    dtxt="个人资料"></i> 个人资料</a>
+
+                        </li>
+                        <li class="hidden-xs" id="logout">
+                            <a href="{% url 'account_logout' %}"><i class="fa fa-close"></i> 注销账户</a>
+                        </li>
+                        <li class="hidden-xs powerOff">
+                            <a href="javascript:void(0)"><i class="fa fa-power-off"></i> 关闭电源</a>
+                        </li>
+                        <li class="hidden-xs redirectTerminal">
+                            <a href="javascript:void(0)"><i class="fa fa-external-link"></i> 转至终端</a>
+                        </li>
+                        <li></li>
+
+                    </ul>
+                </nav>
+            </div>
+            <div class="row J_mainContent" id="content-main">
+                <iframe class="J_iframe" name="iframe0" id="iframe0" width="100%" height="100%" src="{% url 'main' %}"
+                    seamless></iframe>
+            </div>
+
+            <div class="footer navbar-fixed-bottom">
+                <div class="pull-right" style="margin-right: 20px;font-size: 15px;">
+                    版权所有&nbsp;&copy; 2013-{% now 'Y' %} <a href="javascript:void(0)">杭州研一智控有限公司</a>
+                </div>
+            </div>
+        </div>
+        <!--右侧部分结束-->
+
+    </div>
+    <!-- 全局js -->
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'plugins/virtualkeyboard/virtualkeyboard.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/plugins/metisMenu/jquery.metisMenu.js' %}"></script>
+    <script src="{% static 'js/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
+    <script src="{% static 'js/plugins/layer/layer.min.js' %}"></script>
+    <script src="{% static 'js/utils.js' %}"></script>
+
+
+
+    <!-- 第三方插件 -->
+    <script src="{% static 'js/plugins/pace/pace.min.js' %}"></script>
+    <script src="{% static 'js/qwebchannel-js.js' %}"></script>
+    <script type="text/javascript">
+        var P_Face, P_ClientCom;
+        var flag_ = false;
+
+        var visitType = getUrlParam('visitType');
+        if ("undefined" != typeof qt) {
+            new QWebChannel(qt.webChannelTransport, function (channel) {
+                P_Face = channel.objects.P_Face;
+                P_ClientCom = channel.objects.P_ClientCom;
+            });
+        }
+
+        $(function () {
+
+            $(".powerOff").click(function () {
+                parent.layer.confirm('确定要关机么？', {
+                    btn: ['确定', '取消'], skin: 'layer-custom', title: '提示' //按钮
+                }, function (confimIndex) {
+                    parent.layer.close(confimIndex);
+                    P_ClientCom.powerOff();
+
+                }, function () {
+                    return
+                });
+            });
+            if (visitType != '1') {
+                $(".centerVisit").hide();
+                $(".powerOff").hide();
+            }
+
+            if (visitType != '2') {
+                $(".redirectTerminal").hide();
+            }
+            else {
+                $("#logout").hide();
+                if (typeof (P_Sys) != "undefined") {
+                    P_Sys.setZoomLevel(1.1);
+                }
+
+            }
+            
+            $('#med-manager').click(function () {
+                if (flag_) {
+                    flag_ = false;
+                    $('#med-show').css('display', 'none')
+                } else {
+                    flag_ = true;
+                    $('#med-show').css('display', 'block')
+                }
+
+            });
+            $("#openDoor").click(function () {
+                P_ClientCom.openDoor();
+            });
+            $(".redirectTerminal").click(function () {
+                //P_Sys.loadUrl("file:////home/yanyi/Project/RMS/UI_WebEngine/index.html");
+                location.assign("file:////home/yanyi/Project/RMS/UI_WebEngine/index.html");
+            });
+            var currentTime = 0;
+            getWarningCount();
+            setInterval(function () {
+                currentTime++;
+                if (currentTime % 5 == 0) {
+                    getWarningCount();
+                }
+            }, 3000);
+        });
+
+
+
+        // // 定时获取预警信息数量
+        // setInterval(function () {
+        //     $.ajax({
+
+        //         url: '/warning/warning_numbers',
+        //         async: false,
+        //         success: function (data) {
+        //             var nb = data.number;
+        //             var a = $('#war_number').text(nb);
+        //         }
+        //     })
+        // }, 3000);
+
+
+        function getWarningCount() {
+
+            $.get("/warning/warning_numbers", function (obj) {
+                $(".warning-count .label").text(obj.number);
+                if (obj.number == 0) {
+                    $(".warning-count .label").hide();
+                }
+                else {
+                    $(".warning-count .label").show();
+                }
+            });
+
+        }
+        function completeAddFace(code) {
+            layer.msg("录入人脸成功！");
+
+        }
+
+
+
+    </script>
+</body>
+
+</html>

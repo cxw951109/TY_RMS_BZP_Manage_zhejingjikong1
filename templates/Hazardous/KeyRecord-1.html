@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+<style>
+
+
+</style>
+
+{% block content %}
+<div class="ibox-content" style="height:520px;padding:5px">
+    <table id="dataTableModel" class="table table-striped table-bordered table-hover dataTables-example">
+        <thead>
+            <tr>
+                <th>钥匙条码编号</th>
+                <th>钥匙名称</th>
+                <th>操作人</th>
+                <th>操作类型</th>
+                <th>操作时间</th>
+                <th>位置</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+        {% load static %}
+<script src="{% static 'js/utils.js' %}"></script>
+                    <script src="{% static 'js/warning.js' %}"></script>
+
+<script type="text/javascript">
+
+    $(function () {
+
+        var tableModel = $('#dataTableModel').DataTable({
+            searching: false,
+            lengthChange: false,
+            select: true,
+            order: [4, 'desc'],
+            "bPaginate": true,
+            iDisplayLength: 10,
+            "info": true,
+            "scrollY": "460px",
+            "scrollCollapse": true,
+            ajax: {
+                url: '{% url 'Hazardous:getKeyRecordListJson' %}',
+                data: { key_id: '{{ key_id }}'},
+                dataSrc: 'data',
+            },
+            columns: [
+            { data: 'BarCode' },
+            { data: 'Name' },
+            { data: 'CreateUserName' },
+            { data: 'RecordType' },
+            { data: 'CreateDate' },
+            { data: 'Place' }
+            ],
+            createdRow: function (row, data, dataIndex) {
+                $(row).children('td').eq(4).html(get_date(data.CreateDate));
+                $(row).children('td').eq(5).html(data.ClientCode?data.ClientCode + '号终端;序号' +(data.Place?data.Place:'') : '')
+            }
+
+        });
+ // 格式化sqlAlchemy的时间格式
+function get_date(params) {
+    if(params){
+               return params.replace('T', ' ')
+           }
+    }
+    });
+
+</script>
+
+{% endblock %}

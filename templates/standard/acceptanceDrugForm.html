@@ -1,0 +1,224 @@
+{% extends 'baseBZPForm.html' %}
+
+{% block content %}
+    {% load static %}
+    <style>
+        .layui-form-label {
+            width: 88px;
+        }
+    </style>
+    <div class="layui-form" lay-filter="layuiadmin-form-admin" id="layuiadmin-form-admin"
+         style="padding: 20px 30px 0 0;">
+        <input name="PurchaseOrderDetailedId" type="hidden" value="{% firstof model.PurchaseOrderDetailedId '' %}"/>
+        <div class="layui-form-item">
+            <label class="layui-form-label">标准品名称</label>
+            <div class="layui-input-block">
+                <input type="text" style="width: 825px;" name="DrugName" id="DrugName"
+                       value="{% firstof model.DrugName '' %}" lay-verify="required" autocomplete="off"
+                       class="layui-input" placeholder="请输入标准品名称">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">EnglishName</label>
+            <div class="layui-input-block">
+                <input type="text" style="width: 825px;" name="EnglishName" id="EnglishName"
+                       value="{% firstof model.EnglishName '' %}" autocomplete="off"
+                       class="layui-input" placeholder="请输入标准品英文名称">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">编号批次号</label>
+            <div class="layui-input-inline">
+                <input type="text" name="CASNumber" id="CASNumber" value="{% firstof model.CASNumber '' %}"
+                       placeholder="请输入编号批次号" autocomplete="off"
+                       class="layui-input">
+            </div>
+            <label class="layui-form-label">规格</label>
+            <div class="layui-input-inline">
+                <div class="layui-inline" style="width: 115px;">
+                    <input type="text" name="Speci" id="Speci" value="{% firstof model.Speci '' %}" lay-verify="number"
+                           placeholder="请输入规格" autocomplete="off"
+                           class="layui-input">
+                </div>
+                <div class="layui-inline" style="width: 60px; margin-right: 0 !important;">
+                    <select name="SpeciUnit" id="SpeciUnit" lay-verify="required">
+                        <option value="ml" selected>ml</option>
+                        <option value="g">g</option>
+                    </select>
+                </div>
+            </div>
+            <label class="layui-form-label">余量</label>
+            <div class="layui-input-inline">
+                <input type="text" name="Remain" id="Remain" value="{% firstof model.Remain '' %}"
+                       placeholder="请输入余量" autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">纯度</label>
+            <div class="layui-input-inline">
+                <input type="text" name="Purity" id="Purity" value="{% firstof model.Purity '' %}" lay-verify="required"
+                       placeholder="请输入纯度" autocomplete="off"
+                       class="layui-input">
+            </div>
+            <label class="layui-form-label">生产商</label>
+            <div class="layui-input-inline">
+                <input type="text" name="Manufacturer" id="Manufacturer" value="{% firstof model.Manufacturer '' %}"
+                       placeholder="请输入生产商" autocomplete="off"
+                       class="layui-input">
+            </div>
+            <label class="layui-form-label">销售商</label>
+            <div class="layui-input-inline">
+                <input type="text" name="Distributor" id="Distributor" value="{% firstof model.Distributor '' %}"
+                       placeholder="请输入销售商" autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">生产日期</label>
+            <div class="layui-input-inline">
+                <input type="text" name="ProductionDate" id="ProductionDate"
+                       value="{% firstof model.ProductionDate '' %}" placeholder="请输入生产日期" autocomplete="off"
+                       lay-verify="required"
+                       class="layui-input laydate">
+            </div>
+            <label class="layui-form-label">过期日期</label>
+            <div class="layui-input-inline">
+                <input type="text" name="ExpirationDate" id="ExpirationDate"
+                       value="{% firstof model.ExpirationDate '' %}" placeholder="请输入过期日期" autocomplete="off"
+                       lay-verify="required"
+                       class="layui-input laydate">
+            </div>
+            <label class="layui-form-label">保质期(天)</label>
+            <div class="layui-input-inline">
+                <input name="ShelfLife" id="ShelfLife" oninput="this.value=this.value.replace(/[^0-9]+/,'');"
+                       type="number" value="{% firstof model.ShelfLife '' %}"
+                       placeholder="请输入保质期" autocomplete="off"
+                       lay-verify="required"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">单价（元）</label>
+            <div class="layui-input-inline">
+                <input type="text" name="Price" id="Price"
+                       value="{% firstof model.Price '' %}"
+                       placeholder="请输入购入单价" autocomplete="off"
+                       class="layui-input laydate">
+            </div>
+            <label class="layui-form-label">购入数量</label>
+            <div class="layui-input-inline">
+                <input oninput="this.value=this.value.replace(/[^0-9]+/,'');" type="number" name="Count"
+                       value="{% firstof model.Count '' %}" lay-verify="required|number"
+                       placeholder="请输入购入数量" autocomplete="off"
+                       class="layui-input">
+            </div>
+            <label class="layui-form-label">保存条件</label>
+            <div class="layui-input-inline">
+                <input type="text" name="StorageConditions" value="{% firstof model.StorageConditions '' %}"
+                       placeholder="请输入保存条件" autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item layui-hide">
+            <input type="button" lay-submit lay-filter="LAY-user-front-submit" id="LAY-user-front-submit" value="确认">
+        </div>
+    </div>
+    <script>
+        var index = parent.layer.getFrameIndex(window.name);
+        layui.use(['index', 'form', 'autocomplete', 'laydate'], function () {
+            var form = layui.form;
+            var laydate = layui.laydate;
+            laydate.render({
+                elem: '#ProductionDate',
+                trigger: 'click',
+                done: function () {
+                    var ProductionDate = $("#ProductionDate").val();
+                    var ExpirationDate = $("#ExpirationDate").val();
+                    var ShelfLife = $("#ShelfLife").val();
+                    if (ProductionDate && ExpirationDate) {
+                        ShelfLife = (Date.parse(ExpirationDate) - Date.parse(ProductionDate)) / (24 * 60 * 60 * 1000)
+                        if (ShelfLife < 0) {
+                            msg("过期日期不能比生产日期早");
+                            $("#ProductionDate").val("");
+                            return;
+                        }
+                        $("#ShelfLife").val(ShelfLife)
+                    } else if (ProductionDate && ShelfLife) {
+                        ProductionDate += " 00:00:00";//设置为当天凌晨12点
+                        var date_sc = Date.parse(new Date(ProductionDate)) / 1000;//转换为时间戳
+                        date_sc += (86400) * ShelfLife;//修改后的时间戳
+                        var newDate = new Date(parseInt(date_sc) * 1000);//转换为时间
+                        ExpirationDate = newDate.getFullYear() + '-' + (newDate.getMonth() + 1) + '-' + newDate.getDate();
+                        $("#ExpirationDate").val(ExpirationDate);
+                    }
+                }
+
+            });
+            laydate.render({
+                elem: '#ExpirationDate',
+                trigger: 'click',
+                done: function () {
+                    var ProductionDate = $("#ProductionDate").val();
+                    var ExpirationDate = $("#ExpirationDate").val();
+                    var ShelfLife = $("#ShelfLife").val();
+                    if (ProductionDate && ExpirationDate) {
+                        ShelfLife = (Date.parse(ExpirationDate) - Date.parse(ProductionDate)) / (24 * 60 * 60 * 1000)
+                        if (ShelfLife < 0) {
+                            msg("过期日期不能比生产日期早");
+                            $("#ExpirationDate").val("");
+                            return
+                        }
+                        $("#ShelfLife").val(ShelfLife)
+                    } else if (ExpirationDate && ShelfLife) {
+                        ExpirationDate += " 00:00:00";//设置为当天凌晨12点
+                        var date_sc = Date.parse(new Date(ExpirationDate)) / 1000;//转换为时间戳
+                        date_sc -= (86400) * ShelfLife;//修改后的时间戳
+                        var newDate = new Date(parseInt(date_sc) * 1000);//转换为时间
+                        ProductionDate = newDate.getFullYear() + '-' + (newDate.getMonth() + 1) + '-' + newDate.getDate();
+                        $("#ProductionDate").val(ProductionDate);
+                    }
+                }
+            });
+            autocomplete = layui.autocomplete;
+            autocomplete.render({
+                elem: $('#DrugName'),
+                cache: false,
+                url: '{% url 'standard:autoSearchDrugList' %}',
+                request: {
+                    keywords: 'keyWord'
+                },
+                response: {
+                    code: 'code',
+                    data: 'data'
+                },
+                {% verbatim %}
+                template_val: '{{d.value}}',
+                template_txt: '{{d.value}} {{d.subvalue!="" ? "<span class=\'layui-badge layui-bg-gray\'>" + d.subvalue.substr(0,36) + "</span>" : "" }}',
+                {% endverbatim %}
+                onselect: function (obj) {
+                    $("#CASNumber").val(obj.id);
+                    $("#EnglishName").val(obj.EnglishName);
+                }
+            });
+        })
+        $("#ShelfLife").change(function () {
+            var ProductionDate = $("#ProductionDate").val()
+            var ExpirationDate = $("#ExpirationDate").val()
+            var ShelfLife = $("#ShelfLife").val();
+            if (ShelfLife < 0) {
+                msg("保质期天数不能为负数");
+                $("#ShelfLife").val("");
+                return
+            }
+            if (ProductionDate && ShelfLife !== "") {
+                ProductionDate += " 00:00:00";//设置为当天凌晨12点
+                var date_sc = Date.parse(new Date(ProductionDate)) / 1000;//转换为时间戳
+                date_sc += (86400) * ShelfLife;//修改后的时间戳
+                var newDate = new Date(parseInt(date_sc) * 1000);//转换为时间
+                ExpirationDate = newDate.getFullYear() + '-' + (newDate.getMonth() + 1) + '-' + newDate.getDate();
+                $("#ExpirationDate").val(ExpirationDate);
+            }
+        });
+    </script>
+{% endblock %}

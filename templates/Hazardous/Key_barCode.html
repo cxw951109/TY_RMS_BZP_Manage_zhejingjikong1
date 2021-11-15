@@ -1,0 +1,52 @@
+{% extends 'baseBZP.html' %}
+
+{% block content %}
+    <style type="text/css">
+        body {
+            background-color: #FFF !important;
+        }
+    </style>
+    {% load static %}
+
+    <div class="layui-fluid" style="padding: 0 !important;">
+        <div class="layui-card">
+
+            <div class="layui-card-body">
+                <div class="layui-bg-black" id="scanBox"
+                     style="font-size: 25px;text-align: center; line-height: 80px; height: 80px">
+                    <div id="complete"></div>
+                    <div class="materialOperaTip">请扫描条码</div>
+                    <div><input name="BarCode" id="BarCode"
+                                placeholder="条码编号"
+                                class="layui-input" type="hidden"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+        layui.use(['index', 'table'], function () {
+            var $ = layui.$
+                , table = layui.table
+                , form = layui.form;
+
+            window.focus();   // 当前页面获得焦点用来RFID扫描
+            //挂钩jquery插件，实现条码识别
+            $(document).barCodeScanerModeEnter(function (barCode) {
+                console.log(barCode)
+                if (!barCode) {
+                    msg('条码无效');
+                    return false
+                }
+                sessionStorage.setItem('barCode_', barCode)
+                {#parent.$('#id').val(id);#}
+                {#parent.get_barCode(barCode);#}
+                var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+                parent.layer.close(index); //再执行关闭
+            });
+
+        });
+
+    </script>
+{% endblock %}

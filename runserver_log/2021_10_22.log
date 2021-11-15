@@ -1,0 +1,88 @@
+具体时间:[2021-10-22 08:36:28,498][default:INFO(22)]
+当前文件位置:[C:\Users\Administrator\Desktop\20211011\TY_RMS_BZP_Manage_yanshi_new\user\login_required.py]模块名:[login_required:]函数名:[process_request]:
+[第22行]-用户没有登录, 跳转到登录页面
+
+具体时间:[2021-10-22 08:37:28,893][default:INFO(22)]
+当前文件位置:[C:\Users\Administrator\Desktop\20211011\TY_RMS_BZP_Manage_yanshi_new\user\login_required.py]模块名:[login_required:]函数名:[process_request]:
+[第22行]-用户没有登录, 跳转到登录页面
+
+具体时间:[2021-10-22 08:37:31,868][default:INFO(22)]
+当前文件位置:[C:\Users\Administrator\Desktop\20211011\TY_RMS_BZP_Manage_yanshi_new\user\login_required.py]模块名:[login_required:]函数名:[process_request]:
+[第22行]-用户没有登录, 跳转到登录页面
+
+具体时间:[2021-10-22 08:37:39,712][default:INFO(182)]
+当前文件位置:[C:\Users\Administrator\Desktop\20211011\TY_RMS_BZP_Manage_yanshi_new\TY_RMS_Multiple_Manage\views.py]模块名:[views:]函数名:[account_login]:
+[第182行]-登录成功
+
+具体时间:[2021-10-22 10:23:24,073][default:INFO(22)]
+当前文件位置:[C:\Users\Administrator\Desktop\20211011\TY_RMS_BZP_Manage_yanshi_new\user\login_required.py]模块名:[login_required:]函数名:[process_request]:
+[第22行]-用户没有登录, 跳转到登录页面
+
+具体时间:[2021-10-22 10:23:26,144][default:INFO(22)]
+当前文件位置:[C:\Users\Administrator\Desktop\20211011\TY_RMS_BZP_Manage_yanshi_new\user\login_required.py]模块名:[login_required:]函数名:[process_request]:
+[第22行]-用户没有登录, 跳转到登录页面
+
+具体时间:[2021-10-22 10:23:33,213][default:INFO(182)]
+当前文件位置:[C:\Users\Administrator\Desktop\20211011\TY_RMS_BZP_Manage_yanshi_new\TY_RMS_Multiple_Manage\views.py]模块名:[views:]函数名:[account_login]:
+[第182行]-登录成功
+
+具体时间:[2021-10-22 10:44:55,792][default:INFO(182)]
+当前文件位置:[C:\Users\Administrator\Desktop\20211011\TY_RMS_BZP_Manage_yanshi_new\TY_RMS_Multiple_Manage\views.py]模块名:[views:]函数名:[account_login]:
+[第182行]-登录成功
+
+具体时间:[2021-10-22 13:08:17,611][default:INFO(182)]
+当前文件位置:[C:\Users\Administrator\Desktop\20211011\TY_RMS_BZP_Manage_yanshi_new\TY_RMS_Multiple_Manage\views.py]模块名:[views:]函数名:[account_login]:
+[第182行]-登录成功
+
+具体时间:[2021-10-22 14:15:53,971][default:INFO(182)]
+当前文件位置:[C:\Users\Administrator\Desktop\20211011\TY_RMS_BZP_Manage_yanshi_new\TY_RMS_Multiple_Manage\views.py]模块名:[views:]函数名:[account_login]:
+[第182行]-登录成功
+
+具体时间:[2021-10-22 15:45:59,095][default:INFO(182)]
+当前文件位置:[C:\Users\Administrator\Desktop\20211011\TY_RMS_BZP_Manage_yanshi_new\TY_RMS_Multiple_Manage\views.py]模块名:[views:]函数名:[account_login]:
+[第182行]-登录成功
+
+具体时间:[2021-10-22 16:06:01,177][default:INFO(182)]
+当前文件位置:[C:\Users\Administrator\Desktop\20211011\TY_RMS_BZP_Manage_yanshi_new\TY_RMS_Multiple_Manage\views.py]模块名:[views:]函数名:[account_login]:
+[第182行]-登录成功
+
+具体时间:[2021-10-22 17:36:02,172][default:INFO(182)]
+当前文件位置:[C:\Users\Administrator\Desktop\20211011\TY_RMS_BZP_Manage_yanshi_new\TY_RMS_Multiple_Manage\views.py]模块名:[views:]函数名:[account_login]:
+[第182行]-登录成功
+
+具体时间:[2021-10-22 18:53:52,685][default:INFO(182)]
+当前文件位置:[C:\Users\Administrator\Desktop\20211011\TY_RMS_BZP_Manage_yanshi_new\TY_RMS_Multiple_Manage\views.py]模块名:[views:]函数名:[account_login]:
+[第182行]-登录成功
+
+具体时间:[2021-10-22 19:04:03,940][default:DEBUG(200)]
+当前文件位置:[C:\Users\Administrator\Desktop\20211011\TY_RMS_BZP_Manage_yanshi_new\Lib\SupervisionWarning.py]模块名:[SupervisionWarning:]函数名:[supervision_start_thread]:
+[第200行]-预警监测：Traceback (most recent call last):
+  File "C:\Users\Administrator\Desktop\20211011\TY_RMS_BZP_Manage_yanshi_new\Lib\SupervisionWarning.py", line 77, in supervision_start_thread
+    PurchaseOrderContent=json.dumps(PurchaseOrderContent),
+  File "c:\users\administrator\appdata\local\programs\python\python36\lib\json\__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+  File "c:\users\administrator\appdata\local\programs\python\python36\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "c:\users\administrator\appdata\local\programs\python\python36\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "c:\users\administrator\appdata\local\programs\python\python36\lib\json\encoder.py", line 180, in default
+    o.__class__.__name__)
+TypeError: Object of type 'Decimal' is not JSON serializable
+
+
+具体时间:[2021-10-22 19:04:05,976][default:DEBUG(200)]
+当前文件位置:[C:\Users\Administrator\Desktop\20211011\TY_RMS_BZP_Manage_yanshi_new\Lib\SupervisionWarning.py]模块名:[SupervisionWarning:]函数名:[supervision_start_thread]:
+[第200行]-预警监测：Traceback (most recent call last):
+  File "C:\Users\Administrator\Desktop\20211011\TY_RMS_BZP_Manage_yanshi_new\Lib\SupervisionWarning.py", line 77, in supervision_start_thread
+    PurchaseOrderContent=json.dumps(PurchaseOrderContent),
+  File "c:\users\administrator\appdata\local\programs\python\python36\lib\json\__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+  File "c:\users\administrator\appdata\local\programs\python\python36\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "c:\users\administrator\appdata\local\programs\python\python36\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "c:\users\administrator\appdata\local\programs\python\python36\lib\json\encoder.py", line 180, in default
+    o.__class__.__name__)
+TypeError: Object of type 'Decimal' is not JSON serializable
+
+

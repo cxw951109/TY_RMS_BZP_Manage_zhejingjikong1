@@ -1,0 +1,374 @@
+{% extends 'baseBZP.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<style type="text/css">
+        .chosen-container-single .chosen-single {
+        height: 25px !important;
+        line-height: 25px !important;
+        padding-top: 2px !important;
+    }
+</style>
+<div class="layui-fluid">
+    <div class="layui-card">
+      <div class="layui-form layui-card-header layuiadmin-card-header-auto">
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">药剂名称</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" id="searchValue" ReserveSearch='' name="searchValue" placeholder="药剂名称">
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <label class="layui-form-label">生产厂商</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" id="Manufacturer" ReserveSearch='' name="searchValue" placeholder="生产厂商">
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <label class="layui-form-label">起始时间</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" id="startTime" ReserveSearch='' name="searchValue" placeholder="起始时间">
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <label class="layui-form-label">结束时间</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" id="endTime" ReserveSearch='' name="searchValue" placeholder="结束时间">
+                </div>
+            </div>
+            <div class="layui-inline" style="height: 42px;">
+                  <button type="button" class="layui-btn layuiadmin-btn-useradmin" data-type="btnPutInSearch">
+                    <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                  </button>
+            </div>
+        </div>
+      </div>
+      <div class="layui-card-body">
+        <div style="padding-bottom: 10px;">
+            <a href="{% url 'dataReport:index' %}" class="layui-btn">返回统计目录</a>
+
+            <button type="button" class="layui-btn layuiadmin-btn-useradmin" data-type="btnTableReload" style="margin-right:3px;" data-toggle="tooltip" data-placement="left" title="刷新统计列表"><i class="fa fa-refresh" aria-hidden="true"></i>刷新</button>
+
+            <button type="button" class="layui-btn layuiadmin-btn-useradmin" data-type="btnTableExport" style="margin-right:3px;" data-toggle="tooltip" data-placement="left" title="导出报表"><i class="fa fa-sign-out" aria-hidden="true"></i>导出报表</button>
+
+            
+            <button class="btn btn-white btn-sm pull-left" style="margin-right:3px;display:none;" data-toggle="tooltip" id="btnTableChart1" data-placement="left" title="以图表形式显示统计数据"><i class="fa fa-pie-chart"></i> 药剂资金消耗图表统计</button>
+            <button class="btn btn-white btn-sm pull-left" style="margin-right:3px;display:none;" data-toggle="tooltip" id="btnTableChart2" data-placement="left" title="以图表形式显示统计数据"><i class="fa fa-pie-chart"></i> 药剂库存价值图表统计</button>
+        </div>
+        
+        <table id="demo" lay-filter="test" lay-data="{id: 'idTest'}"></table>
+
+      </div>
+    </div>
+</div>
+    {% load static %}
+    <script src="{% static 'js/fileDownload.js' %}"></script>
+    <script src="{% static 'js/warning.js' %}"></script>
+    <script src="/static/js/plugins/layDate-v5.0.9/laydate/laydate.js"></script>
+
+<script>
+
+</script>
+<script>
+      var table = layui.table;
+    let dataTable = []
+    //执行渲染
+    table.render({
+        elem: '#demo', //指定原始表格元素选择器（推荐id选择器）
+        // height: 312, //容器高度
+        cols: [
+            [{type: 'checkbox', fixed: 'left'},{ field: 'Name', title: '名称', width: 280, sort: true },
+            { field: 'speci', title: '规格', width: 110, sort: true },
+            { field: 'Manufacturer', title: '生产厂家', width: 140, sort: true },
+            { field: 'Remain', title: '余量(g)', width: 110, sort: true },
+            { field: 'ProductionDate', title: '生产日期', width: 140, sort: true },
+            { field: 'ExpirationDate', title: '过期日期', width: 280, sort: true },
+            { field: 'ShelfLife', title: '保质期', width: 110, sort: true },
+            { field: 'PutInUserName', title: '入库人', width: 110, sort: true },
+            { field: 'PutInDate', title: '入库时间', width: 280, sort: true }]
+        ], //设置表头
+        url: '/dataReport/getPutInInfoJson/',
+        page: true,
+        id: "test",
+        page: {
+          layout: [ 'count', 'prev', 'page', 'next',], //自定义分页布局
+          prev:'上一页',
+          next:'下一页'
+         },
+        limit: 15,
+        limits: [10, 15, 20, 25, 30],
+        height: 'full-160',
+        size:'lg',
+
+        done: function (res, curr, count) {
+        },
+    });
+    var active = {
+        btnPutInSearch: function () {
+            table.reload('test', {
+            where: { //设定异步数据接口的额外参数，任意设
+                searchValue:  $("#searchValue").val(),
+                manufacturer:  $("#Manufacturer").val(),
+                putInDateStart:  $("#startTime").val(),
+                putInDateEnd:  $("#endTime").val(),
+                //…
+            },page: {
+                curr: 1 //重新从第 1 页开始
+            }
+        }) //只重载数据
+        },
+        btnTableReload: function(){
+            location.href = '{% url 'dataReport:getPutInInfo' %}';
+        },
+        btnTableExport: function(){
+            index = '';
+            var url = '{% url 'dataReport:downPutInInfo' %}';
+            var index = parent.layer.load(2,{time: 3*1000});
+            var visitType=window.parent.frames.getUrlParam('visitType');
+            if(((visitType=='1') || (visitType=='2')))
+            {
+                $.get(url+"?visitType=1", function (obj) {
+                                parent.layer.close(index);
+                                if (obj.status == 0) {
+                                    layer.alert('导出成功！', {time:1500,btn:[],title:""});
+                                    tableModel.row('.selected').remove().draw(false);
+                                    return false;
+                                }
+                                else {
+                                    layer.alert(obj.message, {time:1500,btn:[],title:""});
+                                    return false;
+                                }
+                            });
+                        }
+                        else{
+                            $.fileDownload(url, {
+                            httpMethod: 'GET',
+                            data:{
+                                searchValue: $("#searchValue").attr("ReserveSearch"),
+                                manufacturer:$("#Manufacturer").attr("ReserveManu"),
+                                putInDateStart:$("#startTime").attr("ReserveStart"),
+                                putInDateEnd:$("#endTime").attr("ReserveEnd"),
+                            },
+                            prepareCallback: function (url) {
+                                index = parent.layer.load(2,{time: 3*1000});
+                            },
+                            successCallback: function (url) {
+                                parent.layer.close(index)
+                            },
+                            failCallback: function (url) {
+                                msg('数据异常, 下载失败');
+                                parent.layer.close(index)
+                            }
+                        });
+                }
+        }
+    };
+
+    $('.layui-btn.layuiadmin-btn-useradmin').on('click', function () {
+        var type = $(this).data('type');
+        active[type] ? active[type].call(this) : '';
+    });
+
+
+    var laydate = layui.laydate;
+    //年月选择器
+    laydate.render({ 
+  elem: '#startTime',
+  type: 'datetime',
+  format: "yyyy-MM-dd HH:mm:ss"
+});
+laydate.render({ 
+  elem: '#endTime',
+  type: 'datetime',
+  format: "yyyy-MM-dd HH:mm:ss",
+});
+    
+    tableModel = $('#dataTableModel').DataTable({
+        //searching: false,
+        lengthChange: false,
+        select: true,
+        "scrollX": true,
+        "ordering": false,
+        ajax: {
+            url: '/dataReport/getPutInInfoJson/?searchValue='+$("#searchValue").val()+'&manufacturer='+$("#Manufacturer").val()+'&putInDateStart='+$("#startTime").val()+'&putInDateEnd='+$("#endTime").val(),
+            data: {
+                // searchValue:$("#searchValue").val(),
+                // manufacturer:$("#Manufacturer").val(),
+                // putInDateStart:$("#startTime").val(),
+                // putInDateEnd:$("#endTime").val(),
+        },
+            dataSrc: 'data',
+        },
+
+        columns: [
+        { data: 'Name' },
+        { data: 'Speci' },
+        // { data: 'SpeciUnit' },
+        { data: 'Manufacturer' },
+        { data: 'Remain' },
+        {data: 'ProductionDate'},
+        {data: 'ExpirationDate'},
+        {data:'ShelfLife'},
+        { data: 'PutInUserName' },
+        { data: 'PutInDate' },
+        ],
+        createdRow: function(row, data, dataIndex){
+            $(row).children('td').eq(1).html(data.Speci+' '+data.SpeciUnit);
+            // $(row).children('td').eq(3).html(formatIsSupervise(data.IsSupervise));
+        }
+
+    });
+//     $("#btnPutInSearch").click(function () {
+//         var name = $("#searchValue").val();
+//         $("#searchValue").attr("ReserveSearch", name);
+//         var mft = $("#Manufacturer").val();
+//         $("#Manufacturer").attr("ReserveManu", mft);
+//         var sTime = $("#startTime").val();
+//         $("#startTime").attr("ReserveStart", sTime);
+//         var eTime = $("#endTime").val();
+//         $("#endTime").attr("ReserveEnd", eTime);
+
+//         var urlx = '/dataReport/getPutInInfoJson/?searchValue='+name+'&manufacturer='+mft+'&putInDateStart='+sTime+'&putInDateEnd='+eTime;
+//         var url2 = '/dataReport/getPutInInfoJson/?searchValue='+$("#searchValue").val()+'&manufacturer='+$("#Manufacturer").val()+'&putInDateStart='+$("#startTime").val()+'&putInDateEnd='+$("#endTime").val()
+//         console.log(urlx);
+//         console.log(url2);
+//         tableModel.ajax.url(urlx).load();
+//         tableModel.draw();
+// });
+</script>
+<script type="text/javascript">
+
+    $(function () {
+        /* $.get('', function (obj) {
+            $(obj.data).each(function (index, data) {
+                $("#cabinetSelect").append("<option value='" + data.ClientId + "' hassubinfo='true'>" + data.ClientName + "</option>");
+            });
+            $(".chosen-select").chosen({
+                no_results_text: "没有找到",
+                disable_search: true,
+                allow_single_deselect: true
+            });
+        }); */
+        // var tableModel = $('#dataTableModel').DataTable({
+        //     //searching: false,
+        //     lengthChange: false,
+        //     select: true,
+        //     "scrollX": true,
+        //     ajax: {
+        //         url: '{% url 'dataReport:getPutInInfoJson' %}',
+        //         data: {
+        //             name:$("#searchaValue").val(),
+        //             manufacturer:$("#Manufacturer").val(),
+        //             putInDateStart:$("#startTime").val(),
+        //             putInDateEnd:$("#endTime").val(),
+        //     },
+        //         dataSrc: 'data',
+        //     },
+
+        //     columns: [
+        //     { data: 'Name' },
+        //     { data: 'Speci' },
+        //     { data: 'Remain' },
+        //     { data: 'PutIndate' },
+        //     ],
+        //     createdRow: function(row, data, dataIndex){
+        //         $(row).children('td').eq(3).html(formatIsSupervise(data.IsSupervise));
+        //         $(row).children('td').eq(4).html(transition_None(data.TotalCount));
+        //         $(row).children('td').eq(6).html(transition_None(data.UseCount));
+        //         $(row).children('td').eq(7).html(transition_None(data.StockPrice));
+        //         $(row).children('td').eq(10).html(transition_None(data.QuarterlyEmptyPrice));
+        //         $(row).children('td').eq(13).html(transition_None(data.YearEmptyPrice));
+        //     }
+
+        // });
+        $("#btnTableChart1").click(function () {
+            quiteTime = Infinity;
+            parent.layer.open({
+                title: "药剂资金消耗图表统计",
+                shift: 2,
+                type: 2,
+                area: ['850px', '650px'],
+                skin: 'layui-layer-rim', //加上边框
+                content: ['{% url 'dataReport:fundsConsumeChart' %}', 'no'],
+                end: function () {
+                    currentTime = 0;
+                    quiteTime = 600;
+                    tableModel.ajax.reload();
+                }
+            });
+        });
+        $("#btnTableChart2").click(function () {
+            quiteTime = Infinity;
+            parent.layer.open({
+                title: "药剂库存价值图表统计",
+                shift: 2,
+                type: 2,
+                area: ['850px', '650px'],
+                skin: 'layui-layer-rim', //加上边框
+                content: ['{% url 'dataReport:fundsNormalChart' %}', 'no'],
+                end: function () {
+                    currentTime = 0;
+                    quiteTime = 600;
+                    tableModel.ajax.reload();
+                }
+            });
+        });
+        // $("#searchValue").keyup(function () {
+        //     tableModel.search($("#searchValue").val()).draw();
+
+        // })
+
+
+        $("#tablePre").click(function () {
+            $("#dataTableModel_previous").click();
+
+        });
+
+        $("#tableNext").click(function () {
+            $("#dataTableModel_next").click();
+
+        });
+
+        // $('#searchValue').focus(function () {
+        //     $(this).keydown(function () {
+        //         switch (event.keyCode) {
+        //             case 13:
+        //                 return false;
+        //         }
+        //     })
+        // });
+
+
+
+        function transition_None(params) {
+
+            switch (params) {
+                case null:
+                    return 0;
+
+            }
+        }
+
+        function formatIsSupervise(params) {
+            switch (params) {
+                case 0:
+                    return '否';
+                case 1:
+                    return '是';
+                default:
+                    return '否'
+            }
+        }
+
+    });
+</script>
+<iframe width=0 height=0 frameborder=0 id="export" />
+
+
+{% endblock %}

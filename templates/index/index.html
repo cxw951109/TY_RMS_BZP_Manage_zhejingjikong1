@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>浙江省疾控试剂数据展示大屏</title>
+
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta name="csrf-token" content="nVwES6zH-iCExLINmRgI010gGs-7hf_DY2zQ">
+
+    <link rel="stylesheet" type="text/css" href="./../../static/index/lib.css">
+    <link rel="stylesheet" type="text/css" href="./../../static/index/app.css">
+    <style id="global_overwrite_style" type="text/css">
+        .d_1013e-1ilmb0wi-kzn8j6 .d-condition-item .cxd-PopOver-overlay {
+            width: 400vw;
+            height: 400vh;
+            top: -100vh;
+            left: -100vw;
+        }
+
+        .d_1013e-1ilmb0wi-kzn8j6 .condition__form-item .cxd-DateRangePicker-value,
+        .d_1013e-1ilmb0wi-kzn8j6 .condition__form-item .cxd-DatePicker-value,
+        .d_1013e-1ilmb0wi-kzn8j6 .condition__form-item .cxd-DateRangePicker-placeholder,
+        .d_1013e-1ilmb0wi-kzn8j6 .condition__form-item .cxd-DatePicker-placeholder,
+        .d_1013e-1ilmb0wi-kzn8j6 .condition__form-item .cxd-Select-valueWrap {
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .d_1013e-1ilmb0wi-kzn8j6 .cxd-PopOver,
+        .d_1013e-1ilmb0wi-kzn8j6 .cxd-PopOver.cxd-Select-popover {
+            z-index: 9999;
+        }
+    </style>
+</head>
+
+<body style="background-color: transparent; position: relative;" class="">
+<div id="sugar-root">
+    <div class="loader-60devs " data-state="hidden">
+        <div class="loader-60devs-progress"></div>
+    </div>
+    <div class="popMenu-wrapper">
+        <div class="sugar-preview dashboard">
+            <div class="pc show device-container noToolbar">
+                <div class="dashboard-share-container" style="background-color: rgb(0, 0, 0); overflow: auto hidden;">
+                    <div class="dashboard-share-background-image"
+                         style="background: url(&quot;./../../static/index/img-templet/background-2.png&quot;) 0% 0% / 100%; filter: blur(0px); opacity: 1;"></div>
+                    <div style="margin: 0px;">
+                        <div style="position: relative;">
+                            <div class="resize-sensor"
+                                 style="position: absolute; inset: 0px; overflow: scroll; z-index: -1; visibility: hidden;">
+                                <div class="resize-sensor-expand"
+                                     style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: scroll; z-index: -1; visibility: hidden;">
+                                    <div style="position: absolute; left: 0px; top: 0px; width: 1644px; height: 1085px;"></div>
+                                </div>
+                                <div class="resize-sensor-shrink"
+                                     style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: scroll; z-index: -1; visibility: hidden;">
+                                    <div style="position: absolute; left: 0; top: 0; width: 200%; height: 200%"></div>
+                                </div>
+                            </div>
+                            <div id="chart-screenshot-container"
+                                 style="width: 1920px; height: 1080px; overflow: hidden;">
+                                <div class="dashboard-container can-cancel-chart-target rsWebkit3d"
+                                     id="d_1013e-1ilmb0wi-kzn8j6"
+                                     style="width: 1920px; height: 1080px; transform: scale(1, 1) !important; background: rgb(0, 0, 0);">
+                                    <div class="dashboard-background-image can-cancel-chart-target"
+                                         style="background: url(&quot;./../../static/index/img-templet/background-2.png&quot;) 0% 0% / 100% 100%; filter: blur(0px); opacity: 1;"></div>
+                                    <div id="multi-chart-select-overlay" class="can-cancel-chart-target"></div>
+                                    <div class="chart-list row">
+                                        <div id="chart_ktvfnthn3c88r" class="d-chart-item"
+                                             style="width: 165px; height: 30px; left: 160px; top: 755px; z-index: 91; pointer-events: auto;">
+                                            <div class="chart-item animate__animated">
+                                                <div class="chart-item__style"
+                                                     style="background: transparent; border-width: 0px; border-style: solid; border-color: transparent; border-radius: 0px;"></div>
+                                                <div class="chart-item__content"
+                                                     style="border-width: 0px; border-style: solid; border-color: transparent; opacity: 1;">
+                                                    <div class="simple-text-chart-container"
+                                                         style="font-family: &quot;Microsoft Yahei&quot;, Arial, sans-serif; font-size: 20px; color: rgb(64, 77, 105); font-weight: normal; justify-content: center; text-align: center;">
+                                                        <div class="">Arrival Reminder</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="chart_ktvf4wmr5q3cd" class="d-chart-item"
+                                             style="width: 505px; height: 240px; left: 30px; top: 795px; z-index: 90; pointer-events: auto;">
+                                            <div class="chart-item animate__animated">
+                                                <div class="chart-item__style"
+                                                     style="background: transparent; border-width: 0px; border-style: solid; border-color: transparent; border-radius: 0px;"></div>
+                                                <div class="chart-item__content"
+                                                     style="border-width: 0px; border-style: solid; border-color: transparent; opacity: 1;">
+                                                    <div class="chart-toolbar">
+                                                        <div class="cxd-DropDown  cxd-DropDown--alignRight">
+                                                            <button class="cxd-Button cxd-Button--default cxd-Button--iconOnly cxd-Button--xs">
+                                                                <span class="cxd-DropDown-caret"><svg viewBox="0 0 12 8"
+                                                                                                      class="icon icon-caret"><g
+                                                                        id="04\u4E0B\u62C9/24px/\u9ED8\u8BA4\u7981\u7528"
+                                                                        transform="translate(-115.000000, -8.000000)"><polygon
+                                                                        id="Shape" fill="currentColor"
+                                                                        fill-rule="nonzero"
+                                                                        points="125.472727 8 121 12.8 116.527273 8 115 9.6 121 16 127 9.6"></polygon></g></svg></span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="chart chart-table clearfix height100"
+                                                         style="border-top: 1px solid rgb(51, 65, 107);">
+                                                        <table id="chart-table-ktvf4wmr5q3cd"
+                                                               class="table dashboard-table"
+                                                               style="border-color: rgb(51, 65, 107);">
+                                                            <thead class="normalHeader"
+                                                                   style="background: rgba(0, 0, 0, 0.01); color: rgb(154, 168, 212);">
+                                                            <tr>
+                                                                <th class="text-left"
+                                                                    style="border-color: rgb(51, 65, 107); font-size: 17px; padding: 8px 12px; text-align: center;">
+                                                                    采购单号
+                                                                </th>
+                                                                <th class="text-right"
+                                                                    style="border-color: rgb(51, 65, 107); font-size: 17px; padding: 8px 12px; text-align: center;">
+                                                                    到货时间
+                                                                </th>
+                                                                <th class="text-right"
+                                                                    style="border-color: rgb(51, 65, 107); font-size: 17px; padding: 8px 12px; text-align: center;">
+                                                                    试剂数量
+                                                                </th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody style="color: rgb(154, 168, 212); border-color: rgb(51, 65, 107);"
+                                                                   id="acceptance">
+                                                            <tr class="normalTableTr table-dashboard acceptance_tr"
+                                                                style="background-color: rgba(255, 255, 255, 0.05);">
+                                                                <td rowspan="1" colspan="1"
+                                                                    class="table-td-undefined text-left"
+                                                                    style="border-color: rgb(51, 65, 107); font-size: 16px; padding: 8px 12px; text-align: center;">
+                                                                    1020200313103518590
+                                                                </td>
+                                                                <td rowspan="1" colspan="1"
+                                                                    class="table-td-undefined text-right"
+                                                                    style="border-color: rgb(51, 65, 107); font-size: 16px; padding: 8px 12px; text-align: center;">
+                                                                    03-19 10:24:38
+                                                                </td>
+                                                                <td rowspan="1" colspan="1"
+                                                                    class="table-td-undefined text-right"
+                                                                    style="border-color: rgb(51, 65, 107); font-size: 16px; padding: 8px 12px; text-align: center;">
+                                                                    60
+                                                                </td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+
+                                                        <div class="resize-sensor"
+                                                             style="position: absolute; inset: 0px; overflow: scroll; z-index: -1; visibility: hidden;">
+                                                            <div class="resize-sensor-expand"
+                                                                 style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: scroll; z-index: -1; visibility: hidden;">
+                                                                <div style="position: absolute; left: 0px; top: 0px; width: 510px; height: 245px;"></div>
+                                                            </div>
+                                                            <div class="resize-sensor-shrink"
+                                                                 style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: scroll; z-index: -1; visibility: hidden;">
+                                                                <div style="position: absolute; left: 0; top: 0; width: 200%; height: 200%"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="chart_ktvf4oo110hrx" class="d-chart-item"
+                                             style="width: 115px; height: 35px; left: 30px; top: 750px; z-index: 89; pointer-events: auto;">
+                                            <div class="chart-item animate__animated">
+                                                <div class="chart-item__style"
+                                                     style="background: transparent; border-width: 0px; border-style: solid; border-color: transparent; border-radius: 0px;"></div>
+                                                <div class="chart-item__content"
+                                                     style="border-width: 0px; border-style: solid; border-color: transparent; opacity: 1;">
+                                                    <div class="simple-text-chart-container"
+                                                         style="font-family: &quot;Microsoft Yahei&quot;, Arial, sans-serif; font-size: 22px; color: rgb(154, 168, 212); font-weight: normal; justify-content: center; text-align: center;">
+                                                        <div class="">待入库提醒</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="chart_ktuaj5tt4i0w" class="d-chart-item"
+                                             style="width: 145px; height: 40px; left: 690px; top: 565px; z-index: 88; pointer-events: auto;">
+                                            <div class="chart-item animate__animated">
+                                                <div class="chart-item__style"
+                                                     style="background: transparent; border-width: 0px; border-style: solid; border-color: transparent; border-radius: 0px;"></div>
+                                                <div class="chart-item__content"
+                                                     style="border-width: 0px; border-style: solid; border-color: transparent; opacity: 1;">
+                                                    <div class="simple-text-chart-container"
+                                                         style="font-family: &quot;Microsoft Yahei&quot;, Arial, sans-serif; font-size: 20px; color: rgb(64, 77, 105); font-weight: normal; justify-content: center; text-align: center;">
+                                                        <div class="">Warning Data</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="chart_ktu9w9re4ztsw" class="d-chart-item"
+                                             style="width: 215px; height: 55px; left: 1540px; top: 990px; z-index: 87; pointer-events: auto;">
+                                            <div class="chart-item animate__animated">
+                                                <div class="chart-item__style"
+                                                     style="background: transparent; border-width: 0px; border-style: solid; border-color: transparent; border-radius: 0px;"></div>
+                                                <div class="chart-item__content"
+                                                     style="border-width: 0px; border-style: solid; border-color: transparent; opacity: 1;">
+                                                    <div class="simple-text-chart-container"
+                                                         style="font-family: &quot;Microsoft Yahei&quot;, Arial, sans-serif; font-size: 20px; color: rgb(115, 170, 229); font-weight: normal; justify-content: center; text-align: center;">
+                                                        <div class="">库存试剂种类占比</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="chart_ktu8iwd65vekc" class="d-chart-item"
+                                             style="width: 800px; height: 410px; left: 585px; top: 610px; z-index: 86; pointer-events: auto;">
+                                            <div class="chart-item animate__animated">
+                                                <div class="chart-item__style"
+                                                     style="background: transparent; border-width: 0px; border-style: solid; border-color: transparent; border-radius: 0px;"></div>
+                                                <div class="chart-item__content"
+                                                     style="border-width: 0px; border-style: solid; border-color: transparent; opacity: 1;">
+                                                    <div class="chart-toolbar">
+                                                        <div class="cxd-DropDown  cxd-DropDown--alignRight">
+                                                            <button class="cxd-Button cxd-Button--default cxd-Button--iconOnly cxd-Button--xs">
+                                                                <span class="cxd-DropDown-caret"><svg viewBox="0 0 12 8"
+                                                                                                      class="icon icon-caret"><g
+                                                                        id="04\u4E0B\u62C9/24px/\u9ED8\u8BA4\u7981\u7528"
+                                                                        transform="translate(-115.000000, -8.000000)"><polygon
+                                                                        id="Shape" fill="currentColor"
+                                                                        fill-rule="nonzero"
+                                                                        points="125.472727 8 121 12.8 116.527273 8 115 9.6 121 16 127 9.6"></polygon></g></svg></span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="table-play-container" style="position: relative;">
+                                                        <div class="table-play-header"
+                                                             style="height: 40px; background-color: rgb(36, 203, 255); color: rgb(255, 255, 255);">
+                                                            <div class="text-left table-play-header-item"
+                                                                 style="font-size: 17px; width: 8%; text-align: center; text-overflow: ellipsis; white-space: nowrap;">
+                                                                序号
+                                                            </div>
+                                                            <div class="text-right table-play-header-item"
+                                                                 style="font-size: 17px; width: 15%; text-align: left; text-overflow: ellipsis; white-space: nowrap;">
+                                                                类型
+                                                            </div>
+                                                            <div class="text-right table-play-header-item"
+                                                                 style="font-size: 17px; width: 13%; text-align: left; text-overflow: ellipsis; white-space: nowrap;">
+                                                                预警对象
+                                                            </div>
+                                                            <div class="text-right table-play-header-item"
+                                                                 style="font-size: 17px; width: 50%; text-align: left; text-overflow: ellipsis; white-space: nowrap;">
+                                                                内容
+                                                            </div>
+                                                            <div class="text-right table-play-header-item"
+                                                                 style="font-size: 17px; width: 15%; text-align: left; text-overflow: ellipsis; white-space: nowrap;">
+                                                                预警时间
+                                                            </div>
+                                                        </div>
+                                                        <div class="tabel-play-body"
+                                                             style="margin-top: 40px; height: 362px;">
+                                                            <div class="tabel-play-body-scorll" id="warningList"
+                                                                 style="top: -724px; transition: top 1s ease 0s;">
+                                                                <div class="table-play-line table-play-line-odd table-dashboard warningList_div"
+                                                                     style="background-color: rgba(255, 255, 255, 0.1); color: rgb(115, 170, 229); height: 45.25px; top: 724px;">
+                                                                    <div class="table-play-line-item text-left"
+                                                                         style="width: 8%;">
+                                                                        <div class="table-play-line-content"
+                                                                             style="font-size: 13px; text-align: center; text-overflow: ellipsis; white-space: nowrap; width: 20.8px; height: 20.8px; line-height: 20.8px; border-radius: 50%; color: rgb(255, 255, 255); background-color: rgb(72, 76, 220);">
+                                                                            1
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="table-play-line-item text-right"
+                                                                         style="width: 15%;">
+                                                                        <div class="table-play-line-content"
+                                                                             style="font-size: 13px; text-align: left; text-overflow: ellipsis; white-space: nowrap;">
+                                                                            出库超期预警
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="table-play-line-item text-right"
+                                                                         style="width: 13%;">
+                                                                        <div class="table-play-line-content"
+                                                                             style="font-size: 13px; text-align: left; text-overflow: ellipsis; white-space: nowrap;">
+                                                                            无水碳酸钠
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="table-play-line-item text-right"
+                                                                         style="width: 50%;">
+                                                                        <div class="table-play-line-content"
+                                                                             style="font-size: 13px; text-align: left; text-overflow: ellipsis; white-space: nowrap;">
+                                                                            出库超期预警：用户 郑熠斌 已领用 无水碳酸钠()138天，超过预警线, 1天
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="table-play-line-item text-right"
+                                                                         style="width: 15%;">
+                                                                        <div class="table-play-line-content"
+                                                                             style="font-size: 13px; text-align: left; text-overflow: ellipsis; white-space: nowrap;">
+                                                                            05-23 09:23:52
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="resize-sensor"
+                                                             style="position: absolute; inset: 0px; overflow: scroll; z-index: -1; visibility: hidden;">
+                                                            <div class="resize-sensor-expand"
+                                                                 style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: scroll; z-index: -1; visibility: hidden;">
+                                                                <div style="position: absolute; left: 0px; top: 0px; width: 805px; height: 415px;"></div>
+                                                            </div>
+                                                            <div class="resize-sensor-shrink"
+                                                                 style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: scroll; z-index: -1; visibility: hidden;">
+                                                                <div style="position: absolute; left: 0; top: 0; width: 200%; height: 200%"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="chart_dc_1013e-b6rke1by-5l276z" class="d-chart-item"
+                                             style="width: 425px; height: 280px; left: 1440px; top: 735px; z-index: 85; pointer-events: auto;">
+                                            <div class="chart-item animate__animated">
+                                                <div class="chart-item__style"
+                                                     style="background: transparent; border-width: 0px; border-style: solid; border-color: transparent; border-radius: 0px;"></div>
+                                                <div class="chart-item__content"
+                                                     style="border-width: 0px; border-style: solid; border-color: transparent; opacity: 1;">
+                                                    <div class="chart-toolbar">
+                                                        <div class="cxd-DropDown  cxd-DropDown--alignRight">
+                                                            <button class="cxd-Button cxd-Button--default cxd-Button--iconOnly cxd-Button--xs">
+                                                                <span class="cxd-DropDown-caret"><svg viewBox="0 0 12 8"
+                                                                                                      class="icon icon-caret"><g
+                                                                        id="04\u4E0B\u62C9/24px/\u9ED8\u8BA4\u7981\u7528"
+                                                                        transform="translate(-115.000000, -8.000000)"><polygon
+                                                                        id="Shape" fill="currentColor"
+                                                                        fill-rule="nonzero"
+                                                                        points="125.472727 8 121 12.8 116.527273 8 115 9.6 121 16 127 9.6"></polygon></g></svg></span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="chart echarts"
+                                                         style="height: 100%; -webkit-tap-highlight-color: transparent; user-select: none; position: relative;"
+                                                         _echarts_instance_="ec_1633939499397">
+                                                        <div style="position: relative; width: 425px; height: 280px; padding: 0px; margin: 0px; border-width: 0px;">
+                                                            <div id="OftenUse" width="425" height="280"
+                                                                    style="position: absolute; left: 0px; top: 0px; width: 425px; height: 280px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="chart_dc_1013e-46i8fq8c-gzjbqg" class="d-chart-item"
+                                             style="width: 130px; height: 35px; left: 585px; top: 565px; z-index: 83; pointer-events: auto;">
+                                            <div class="chart-item animate__animated">
+                                                <div class="chart-item__style"
+                                                     style="background: transparent; border-width: 0px; border-style: solid; border-color: transparent; border-radius: 0px;"></div>
+                                                <div class="chart-item__content"
+                                                     style="border-width: 0px; border-style: solid; border-color: transparent; opacity: 1;">
+                                                    <div class="simple-text-chart-container"
+                                                         style="font-family: &quot;Microsoft Yahei&quot;, Arial, sans-serif; font-size: 22px; color: rgb(154, 168, 212); font-weight: normal; justify-content: flex-start; text-align: start;">
+                                                        <div class="">预警信息</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="chart_dc_1013e-9b3s6k00-bvx25w" class="d-chart-item"
+                                             style="width: 115px; height: 35px; left: 30px; top: 40px; z-index: 81; pointer-events: auto;">
+                                            <div class="chart-item animate__animated">
+                                                <div class="chart-item__style"
+                                                     style="background: transparent; border-width: 0px; border-style: solid; border-color: transparent; border-radius: 0px;"></div>
+                                                <div class="chart-item__content"
+                                                     style="border-width: 0px; border-style: solid; border-color: transparent; opacity: 1;">
+                                                    <div class="image-chart-container"
+                                                         style="width: 115px; height: 35px; line-height: 35px; background-image: url(&quot;./../../static/index/img-templet/yanyi_logo.png&quot;); opacity: 1; margin-left: -57.5px; margin-top: -17.5px; transform: rotate(0deg); background-size: 100% 100%; background-repeat: no-repeat; background-position: center center;"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="chart_dc_1013e-aczzfv72-mexq6v" class="d-chart-item"
+                                             style="width: 105px; height: 30px; left: 1545px; top: 425px; z-index: 80; pointer-events: auto;">
+                                            <div class="chart-item animate__animated">
+                                                <div class="chart-item__style"
+                                                     style="background: transparent; border-width: 0px; border-style: solid; border-color: transparent; border-radius: 0px;"></div>
+                                                <div class="chart-item__content"
+                                                     style="border-width: 0px; border-style: solid; border-color: transparent; opacity: 1;">
+                                                    <div class="simple-text-chart-container"
+                                                         style="font-family: &quot;Microsoft Yahei&quot;, Arial, sans-serif; font-size: 20px; color: rgb(64, 77, 105); font-weight: normal; justify-content: center; text-align: center;">
+                                                        <div class="">Top Used</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="chart_dc_1013e-9ia3ggss-2pr3yw" class="d-chart-item"
+                                             style="width: 120px; height: 35px; left: 1430px; top: 420px; z-index: 79; pointer-events: auto;">
+                                            <div class="chart-item animate__animated">
+                                                <div class="chart-item__style"
+                                                     style="background: transparent; border-width: 0px; border-style: solid; border-color: transparent; border-radius: 0px;"></div>
+                                                <div class="chart-item__content"
+                                                     style="border-width: 0px; border-style: solid; border-color: transparent; opacity: 1;">
+                                                    <div class="simple-text-chart-container"
+                                                         style="font-family: &quot;Microsoft Yahei&quot;, Arial, sans-serif; font-size: 20px; color: rgb(154, 168, 212); font-weight: normal; justify-content: flex-start; text-align: start;">
+                                                        <div class="">最常用试剂</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="chart_dc_1013e-81j3olij-z8x79m" class="d-chart-item"
+                                             style="width: 505px; height: 240px; left: 30px; top: 490px; z-index: 78; pointer-events: auto;">
+                                            <div class="chart-item animate__animated">
+                                                <div class="chart-item__style"
+                                                     style="background: transparent; border-width: 0px; border-style: solid; border-color: transparent; border-radius: 0px;"></div>
+                                                <div class="chart-item__content"
+                                                     style="border-width: 0px; border-style: solid; border-color: transparent; opacity: 1;">
+                                                    <div class="chart-toolbar">
+                                                        <div class="cxd-DropDown  cxd-DropDown--alignRight">
+                                                            <button class="cxd-Button cxd-Button--default cxd-Button--iconOnly cxd-Button--xs">
+                                                                <span class="cxd-DropDown-caret"><svg viewBox="0 0 12 8"
+                                                                                                      class="icon icon-caret"><g
+                                                                        id="04\u4E0B\u62C9/24px/\u9ED8\u8BA4\u7981\u7528"
+                                                                        transform="translate(-115.000000, -8.000000)"><polygon
+                                                                        id="Shape" fill="currentColor"
+                                                                        fill-rule="nonzero"
+                                                                        points="125.472727 8 121 12.8 116.527273 8 115 9.6 121 16 127 9.6"></polygon></g></svg></span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="chart chart-table clearfix height100"
+                                                         style="border-top: 1px solid rgb(51, 65, 107);">
+                                                        <table id="chart-table-dc_1013e-81j3olij-z8x79m"
+                                                               class="table dashboard-table"
+                                                               style="border-color: rgb(51, 65, 107);">
+                                                            <thead class="normalHeader"
+                                                                   style="background: rgba(0, 0, 0, 0.01); color: rgb(154, 168, 212);">
+                                                            <tr>
+                                                                <th class="text-left"
+                                                                    style="border-color: rgb(51, 65, 107); font-size: 17px; padding: 8px 12px; text-align: center;">
+                                                                    试剂名称
+                                                                </th>
+                                                                <th class="text-right"
+                                                                    style="border-color: rgb(51, 65, 107); font-size: 17px; padding: 8px 12px; text-align: center;">
+                                                                    库存量
+                                                                </th>
+                                                                <th class="text-right"
+                                                                    style="border-color: rgb(51, 65, 107); font-size: 17px; padding: 8px 12px; text-align: center;">
+                                                                    预警量
+                                                                </th>
+                                                                <th class="text-right"
+                                                                    style="border-color: rgb(51, 65, 107); font-size: 17px; padding: 8px 12px; text-align: center;">
+                                                                    状态
+                                                                </th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody style="color: rgb(154, 168, 212); border-color: rgb(51, 65, 107);"
+                                                                   id="WantPurchaseList">
+                                                            <tr class="normalTableTr table-dashboard WantPurchaseList_tr"
+                                                                style="background-color: rgba(255, 255, 255, 0.05);">
+                                                                <td rowspan="1" colspan="1"
+                                                                    class="table-td-undefined text-left"
+                                                                    style="border-color: rgb(51, 65, 107); font-size: 16px; padding: 8px 12px; text-align: center;">
+                                                                    甲醇
+                                                                </td>
+                                                                <td rowspan="1" colspan="1"
+                                                                    class="table-td-undefined text-right"
+                                                                    style="border-color: rgb(51, 65, 107); font-size: 16px; padding: 8px 12px; text-align: center;">
+                                                                    13
+                                                                </td>
+                                                                <td rowspan="1" colspan="1"
+                                                                    class="table-td-undefined text-right"
+                                                                    style="border-color: rgb(51, 65, 107); font-size: 16px; padding: 8px 12px; text-align: center;">
+                                                                    10
+                                                                </td>
+                                                                <td rowspan="1" colspan="1"
+                                                                    class="table-td-undefined text-right"
+                                                                    style="border-color: rgb(51, 65, 107); font-size: 16px; padding: 8px 12px; text-align: center;">
+                                                                    未处理
+                                                                </td>
+                                                            </tr>
+
+                                                            </tbody>
+                                                        </table>
+                                                        <div class="resize-sensor"
+                                                             style="position: absolute; inset: 0px; overflow: scroll; z-index: -1; visibility: hidden;">
+                                                            <div class="resize-sensor-expand"
+                                                                 style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: scroll; z-index: -1; visibility: hidden;">
+                                                                <div style="position: absolute; left: 0px; top: 0px; width: 510px; height: 245px;"></div>
+                                                            </div>
+                                                            <div class="resize-sensor-shrink"
+                                                                 style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: scroll; z-index: -1; visibility: hidden;">
+                                                                <div style="position: absolute; left: 0; top: 0; width: 200%; height: 200%"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="chart_dc_1013e-36c2fl7x-7xmrpx" class="d-chart-item"
+                                             style="width: 140px; height: 40px; left: 1530px; top: 150px; z-index: 77; pointer-events: auto;">
+                                            <div class="chart-item animate__animated">
+                                                <div class="chart-item__style"
+                                                     style="background: transparent; border-width: 0px; border-style: solid; border-color: transparent; border-radius: 0px;"></div>
+                                                <div class="chart-item__content"
+                                                     style="border-width: 0px; border-style: solid; border-color: transparent; opacity: 1;">
+                                                    <div class="simple-text-chart-container"
+                                                         style="font-family: &quot;Microsoft Yahei&quot;, Arial, sans-serif; font-size: 20px; color: rgb(64, 77, 105); font-weight: normal; justify-content: center; text-align: center;">
+                                                        <div class="">Statistics Data</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="chart_dc_1013e-5n372ohn-8w9g42" class="d-chart-item"
+                                             style="width: 174px; height: 75px; left: 1730px; top: 305px; z-index: 76; pointer-events: auto;">
+                                            <div class="chart-item animate__animated">
+                                                <div class="chart-item__style"
+                                                     style="background: transparent; border-width: 0px; border-style: solid; border-color: transparent; border-radius: 0px;"></div>
+                                                <div class="chart-item__content"
+                                                     style="border-width: 0px; border-style: solid; border-color: transparent; opacity: 1;">
+                                                    <div class="chart-toolbar">
+                                                        <div class="cxd-DropDown  cxd-DropDown--alignRight">
+                                                            <button class="cxd-Button cxd-Button--default cxd-Button--iconOnly cxd-Button--xs">
+                                                                <span class="cxd-DropDown-caret"><svg viewBox="0 0 12 8"
+                                                                                                      class="icon icon-caret"><g
+                                                                        id="04\u4E0B\u62C9/24px/\u9ED8\u8BA4\u7981\u7528"
+                                                                        transform="translate(-115.000000, -8.000000)"><polygon
+                                                                        id="Shape" fill="currentColor"
+                                                                        fill-rule="nonzero"
+                                                                        points="125.472727 8 121 12.8 116.527273 8 115 9.6 121 16 127 9.6"></polygon></g></svg></span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flip-number-warpper"
+                                                         style="justify-content: flex-start;">
+                                                        <div class="flip-number" style="flex-direction: column;">
+                                                            <div class="flip-number-prefix"
+                                                                 style="font-family: &quot;Microsoft Yahei&quot;; font-size: 14px; color: rgb(115, 170, 229); align-self: flex-start; margin-right: 0px; margin-bottom: 0px;"></div>
+                                                            <div class="flip-number-number"
+                                                                 style="align-self: flex-start;">
+                                                                <div class="flip-single-number" id="purchaseCount"
+                                                                     style="font-family: &quot;Microsoft Yahei&quot;, Arial, sans-serif; font-size: 32px; font-weight: bold; color: rgb(255, 255, 255); margin-left: 0px; margin-right: 0px; padding: 0px; box-sizing: content-box; width: 0.6em; text-align: center;">
+                                                                    0
+                                                                </div>
+                                                            </div>
+                                                            <div class="flip-number-suffix"
+                                                                 style="font-family: &quot;Microsoft Yahei&quot;; font-size: 14px; color: rgb(176, 194, 249); align-self: flex-start; margin-left: 0px; margin-top: 0px;">
+                                                                采购到货
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="chart_dc_1013e-7dgj66ao-ve2x5n" class="d-chart-item"
+                                             style="width: 75px; height: 75px; left: 1637px; top: 307px; z-index: 75; pointer-events: auto;">
+                                            <div class="chart-item animate__animated">
+                                                <div class="chart-item__style"
+                                                     style="background: transparent; border-width: 0px; border-style: solid; border-color: transparent; border-radius: 0px;"></div>
+                                                <div class="chart-item__content"
+                                                     style="border-width: 0px; border-style: solid; border-color: transparent; opacity: 1;">
+                                                    <div class="image-chart-container"
+                                                         style="width: 75px; height: 75px; line-height: 75px; background-image: url(&quot;./../../static/index/img-templet/pic-7.png&quot;); opacity: 1; margin-left: -37.5px; margin-top: -37.5px; transform: rotate(0deg); background-size: 100% 100%; background-repeat: no-repeat; background-position: center center;"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="chart_dc_1013e-1uhch8xz-n5wed7" class="d-chart-item"
+                                             style="width: 120px; height: 75px; left: 1730px; top: 205px; z-index: 74; pointer-events: auto;">
+                                            <div class="chart-item animate__animated">
+                                                <div class="chart-item__style"
+                                                     style="background: transparent; border-width: 0px; border-style: solid; border-color: transparent; border-radius: 0px;"></div>
+                                                <div class="chart-item__content"
+                                                     style="border-width: 0px; border-style: solid; border-color: transparent; opacity: 1;">
+                                                    <div class="chart-toolbar">
+                                                        <div class="cxd-DropDown  cxd-DropDown--alignRight">
+                                                            <button class="cxd-Button cxd-Button--default cxd-Button--iconOnly cxd-Button--xs">
+                                                                <span class="cxd-DropDown-caret"><svg viewBox="0 0 12 8"
+                                                                                                      class="icon icon-caret"><g
+                                                                        id="04\u4E0B\u62C9/24px/\u9ED8\u8BA4\u7981\u7528"
+                                                                        transform="translate(-115.000000, -8.000000)"><polygon
+                                                                        id="Shape" fill="currentColor"
+                                                                        fill-rule="nonzero"
+                                                                        points="125.472727 8 121 12.8 116.527273 8 115 9.6 121 16 127 9.6"></polygon></g></svg></span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flip-number-warpper"
+                                                         style="justify-content: flex-start;">
+                                                        <div class="flip-number" style="flex-direction: column;">
+                                                            <div class="flip-number-prefix"
+                                                                 style="font-family: &quot;Microsoft Yahei&quot;; font-size: 14px; color: rgb(115, 170, 229); align-self: flex-end; margin-right: 0px; margin-bottom: 0px;"></div>
+                                                            <div class="flip-number-number"
+                                                                 style="align-self: flex-start;">
+                                                                <div class="flip-single-number" id="useCount"
+                                                                     style="font-family: &quot;Microsoft Yahei&quot;, Arial, sans-serif; font-size: 32px; font-weight: bold; color: rgb(255, 255, 255); margin-left: 0px; margin-right: 0px; padding: 0px; box-sizing: content-box; width: 0.6em; text-align: center;">
+                                                                    0
+                                                                </div>
+                                                            </div>
+                                                            <div class="flip-number-suffix"
+                                                                 style="font-family: &quot;Microsoft Yahei&quot;; font-size: 14px; color: rgb(176, 194, 249); align-self: flex-start; margin-left: 0px; margin-top: 0px;">
+                                                                今日领用（瓶）
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="chart_dc_1013e-c7v5k51x-4672yb" class="d-chart-item"
+                                             style="width: 75px; height: 75px; left: 1637px; top: 203px; z-index: 73; pointer-events: auto;">
+                                            <div class="chart-item animate__animated">
+                                                <div class="chart-item__style"
+                                                     style="background: transparent; border-width: 0px; border-style: solid; border-color: transparent; border-radius: 0px;"></div>
+                                                <div class="chart-item__content"
+                                                     style="border-width: 0px; border-style: solid; border-color: transparent; opacity: 1;">
+                                                    <div class="image-chart-container"
+                                                         style="width: 75px; height: 75px; line-height: 75px; background-image: url(&quot;./../../static/index/img-templet/pic-5.png&quot;); opacity: 1; margin-left: -37.5px; margin-top: -37.5px; transform: rotate(0deg); background-size: 100% 100%; background-repeat: no-repeat; background-position: center center;"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="chart_dc_1013e-11fkggkw-6mez4z" class="d-chart-item"
+                                             style="width: 85px; height: 75px; left: 1525px; top: 305px; z-index: 72; pointer-events: auto;">
+                                            <div class="chart-item animate__animated">
+                                                <div class="chart-item__style"
+                                                     style="background: transparent; border-width: 0px; border-style: solid; border-color: transparent; border-radius: 0px;"></div>
+                                                <div class="chart-item__content"
+                                                     style="border-width: 0px; border-style: solid; border-color: transparent; opacity: 1;">
+                                                    <div class="chart-toolbar">
+                                                        <div class="cxd-DropDown  cxd-DropDown--alignRight">
+                                                            <button class="cxd-Button cxd-Button--default cxd-Button--iconOnly cxd-Button--xs">
+                                                                <span class="cxd-DropDown-caret"><svg viewBox="0 0 12 8"
+                                                                                                      class="icon icon-caret"><g
+                                                                        id="04\u4E0B\u62C9/24px/\u9ED8\u8BA4\u7981\u7528"
+                                                                        transform="translate(-115.000000, -8.000000)"><polygon
+                                                                        id="Shape" fill="currentColor"
+                                                                        fill-rule="nonzero"
+                                                                        points="125.472727 8 121 12.8 116.527273 8 115 9.6 121 16 127 9.6"></polygon></g></svg></span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flip-number-warpper"
+                                                         style="justify-content: flex-start;">
+                                                        <div class="flip-number" style="flex-direction: column;">
+                                                            <div class="flip-number-prefix"
+                                                                 style="font-family: &quot;Microsoft Yahei&quot;; font-size: 14px; color: rgb(115, 170, 229); align-self: flex-end; margin-right: 0px; margin-bottom: 0px;"></div>
+                                                            <div class="flip-number-number"
+                                                                 style="align-self: flex-start;">
+                                                                <div class="flip-single-number" id="returnCount"
+                                                                     style="font-family: &quot;Microsoft Yahei&quot;, Arial, sans-serif; font-size: 32px; font-weight: bold; color: rgb(255, 255, 255); margin-left: 0px; margin-right: 0px; padding: 0px; box-sizing: content-box; width: 0.6em; text-align: center;">
+                                                                    0
+                                                                </div>
+                                                            </div>
+                                                            <div class="flip-number-suffix"
+                                                                 style="font-family: &quot;Microsoft Yahei&quot;; font-size: 14px; color: rgb(176, 194, 249); align-self: flex-start; margin-left: 0px; margin-top: 0px;">
+                                                                今日归还(瓶)
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="chart_dc_1013e-9pa8slha-x8bd3y" class="d-chart-item"
+                                             style="width: 75px; height: 76px; left: 1424px; top: 307px; z-index: 71; pointer-events: auto;">
+                                            <div class="chart-item animate__animated">
+                                                <div class="chart-item__style"
+                                                     style="background: transparent; border-width: 0px; border-style: solid; border-color: transparent; border-radius: 0px;"></div>
+                                                <div class="chart-item__content"
+                                                     style="border-width: 0px; border-style: solid; border-color: transparent; opacity: 1;">
+                                                    <div class="image-chart-container"
+                                                         style="width: 75px; height: 76px; line-height: 76px; background-image: url(&quot;./../../static/index/img-templet/pic-6.png&quot;); opacity: 1; margin-left: -37.5px; margin-top: -38px; transform: rotate(0deg); background-size: 100% 100%; background-repeat: no-repeat; background-position: center center;"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="chart_dc_1013e-as1zpsf1-jnvm78" class="d-chart-item"
+                                             style="width: 95px; height: 35px; left: 1430px; top: 150px; z-index: 70; pointer-events: auto;">
+                                            <div class="chart-item animate__animated">
+                                                <div class="chart-item__style"
+                                                     style="background: transparent; border-width: 0px; border-style: solid; border-color: transparent; border-radius: 0px;"></div>
+                                                <div class="chart-item__content"
+                                                     style="border-width: 0px; border-style: solid; border-color: transparent; opacity: 1;">
+                                                    <div class="simple-text-chart-container"
+                                                         style="font-family: &quot;Microsoft Yahei&quot;, Arial, sans-serif; font-size: 22px; color: rgb(154, 168, 212); font-weight: normal; justify-content: flex-start; text-align: start;">
+                                                        <div class="">统计数据</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="chart_dc_1013e-4sjt4e61-pzv8yp" class="d-chart-item"
+                                             style="width: 250px; height: 40px; left: 730px; top: 150px; z-index: 69; pointer-events: auto;">
+                                            <div class="chart-item animate__animated">
+                                                <div class="chart-item__style"
+                                                     style="background: transparent; border-width: 0px; border-style: solid; border-color: transparent; border-radius: 0px;"></div>
+                                                <div class="chart-item__content"
+                                                     style="border-width: 0px; border-style: solid; border-color: transparent; opacity: 1;">
+                                                    <div class="simple-text-chart-container"
+                                                         style="font-family: &quot;Microsoft Yahei&quot;, Arial, sans-serif; font-size: 20px; color: rgb(64, 77, 105); font-weight: normal; justify-content: center; text-align: center;">
+                                                        <div class="">Temperature Monitoring</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="chart_dc_1013e-37hvqsnu-bvx2b6" class="d-chart-item"
+                                             style="width: 140px; height: 35px; left: 580px; top: 150px; z-index: 68; pointer-events: auto;">
+                                            <div class="chart-item animate__animated">
+                                                <div class="chart-item__style"
+                                                     style="background: transparent; border-width: 0px; border-style: solid; border-color: transparent; border-radius: 0px;"></div>
+                                                <div class="chart-item__content"
+                                                     style="border-width: 0px; border-style: solid; border-color: transparent; opacity: 1;">
+                                                    <div class="simple-text-chart-container"
+                                                         style="font-family: &quot;Microsoft Yahei&quot;, Arial, sans-serif; font-size: 22px; color: rgb(154, 168, 212); font-weight: normal; justify-content: flex-start; text-align: start;">
+                                                        <div class="">库房温度监测</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="chart_dc_1013e-4lymecid-d53zj7" class="d-chart-item"
+                                             style="width: 825px; height: 365px; left: 570px; top: 185px; z-index: 67; pointer-events: auto;">
+                                            <div class="chart-item animate__animated">
+                                                <div class="chart-item__style"
+                                                     style="background: transparent; border-width: 0px; border-style: solid; border-color: transparent; border-radius: 0px;"></div>
+                                                <div class="chart-item__content"
+                                                     style="border-width: 0px; border-style: solid; border-color: transparent; opacity: 1;">
+                                                    <div class="chart-toolbar">
+                                                        <div class="cxd-DropDown  cxd-DropDown--alignRight">
+                                                            <button class="cxd-Button cxd-Button--default cxd-Button--iconOnly cxd-Button--xs">
+                                                                <span class="cxd-DropDown-caret"><svg viewBox="0 0 12 8"
+                                                                                                      class="icon icon-caret"><g
+                                                                        id="04\u4E0B\u62C9/24px/\u9ED8\u8BA4\u7981\u7528"
+                                                                        transform="translate(-115.000000, -8.000000)"><polygon
+                                                                        id="Shape" fill="currentColor"
+                                                                        fill-rule="nonzero"
+                                                                        points="125.472727 8 121 12.8 116.527273 8 115 9.6 121 16 127 9.6"></polygon></g></svg></span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="chart echarts"
+                                                         style="height: 100%; -webkit-tap-highlight-color: transparent; user-select: none; position: relative;"
+                                                         _echarts_instance_="ec_1633939499399">
+                                                        <div style="position: relative; width: 825px; height: 365px; padding: 0px; margin: 0px; border-width: 0px; cursor: pointer;">
+                                                            <div style="position: absolute; left: 0px; top: 0px; width: 825px; height: 365px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;" data-zr-dom-id="zr_0" width="825" height="365" id="charts"></div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="chart_dc_1013e-cpgywfb9-5l27pn" class="d-chart-item"
+                                             style="width: 395px; height: 260px; left: 1460px; top: 480px; z-index: 66; pointer-events: auto;">
+                                            <div class="chart-item animate__animated">
+                                                <div class="chart-item__style"
+                                                     style="background: transparent; border-width: 0px; border-style: solid; border-color: transparent; border-radius: 0px;"></div>
+                                                <div class="chart-item__content"
+                                                     style="border-width: 0px; border-style: solid; border-color: transparent; opacity: 1;">
+                                                    <div class="chart-toolbar">
+                                                        <div class="cxd-DropDown  cxd-DropDown--alignRight">
+                                                            <button class="cxd-Button cxd-Button--default cxd-Button--iconOnly cxd-Button--xs">
+                                                                <span class="cxd-DropDown-caret"><svg viewBox="0 0 12 8"
+                                                                                                      class="icon icon-caret"><g
+                                                                        id="04\u4E0B\u62C9/24px/\u9ED8\u8BA4\u7981\u7528"
+                                                                        transform="translate(-115.000000, -8.000000)"><polygon
+                                                                        id="Shape" fill="currentColor"
+                                                                        fill-rule="nonzero"
+                                                                        points="125.472727 8 121 12.8 116.527273 8 115 9.6 121 16 127 9.6"></polygon></g></svg></span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="chart echarts"
+                                                         style="height: 100%; -webkit-tap-highlight-color: transparent; user-select: none; position: relative;"
+                                                         _echarts_instance_="ec_1633939499398">
+                                                        <div style="position: relative; width: 395px; height: 260px; padding: 0px; margin: 0px; border-width: 0px; cursor: default;">
+                                                            <div  width="395" height="260"
+                                                                    style="position: absolute; left: 0px; top: 0px; width: 395px; height: 260px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;" id="wordCloud"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="chart_dc_1013e-8u68egrt-y8q2bx" class="d-chart-item"
+                                             style="width: 465px; height: 285px; left: 1420px; top: 470px; z-index: 65; pointer-events: auto;">
+                                            <div class="chart-item animate__animated">
+                                                <div class="chart-item__style"
+                                                     style="background: transparent; border-width: 0px; border-style: solid; border-color: transparent; border-radius: 0px;"></div>
+                                                <div class="chart-item__content"
+                                                     style="border-width: 0px; border-style: solid; border-color: transparent; opacity: 1;">
+                                                    <div class="decorate-chart-container">
+                                                        <div class="decorate-item"
+                                                             style="background-color: rgba(255, 255, 255, 0.05); background-clip: padding-box; filter: blur(0px);"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="chart_dc_1013e-y23q3ds-pzv8yd" class="d-chart-item"
+                                             style="width: 165px; height: 30px; left: 130px; top: 445px; z-index: 64; pointer-events: auto;">
+                                            <div class="chart-item animate__animated">
+                                                <div class="chart-item__style"
+                                                     style="background: transparent; border-width: 0px; border-style: solid; border-color: transparent; border-radius: 0px;"></div>
+                                                <div class="chart-item__content"
+                                                     style="border-width: 0px; border-style: solid; border-color: transparent; opacity: 1;">
+                                                    <div class="simple-text-chart-container"
+                                                         style="font-family: &quot;Microsoft Yahei&quot;, Arial, sans-serif; font-size: 20px; color: rgb(64, 77, 105); font-weight: normal; justify-content: center; text-align: center;">
+                                                        <div class="">To Be Restocked</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="chart_dc_1013e-8fog51bw-34mdpp" class="d-chart-item"
+                                             style="width: 100px; height: 35px; left: 30px; top: 440px; z-index: 63; pointer-events: auto;">
+                                            <div class="chart-item animate__animated">
+                                                <div class="chart-item__style"
+                                                     style="background: transparent; border-width: 0px; border-style: solid; border-color: transparent; border-radius: 0px;"></div>
+                                                <div class="chart-item__content"
+                                                     style="border-width: 0px; border-style: solid; border-color: transparent; opacity: 1;">
+                                                    <div class="simple-text-chart-container"
+                                                         style="font-family: &quot;Microsoft Yahei&quot;, Arial, sans-serif; font-size: 22px; color: rgb(154, 168, 212); font-weight: normal; justify-content: center; text-align: center;">
+                                                        <div class="">申购提醒</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="chart_dc_1013e-49xxp7kt-redn8r" class="d-chart-item"
+                                             style="width: 115px; height: 30px; left: 30px; top: 325px; z-index: 62; pointer-events: auto;">
+                                            <div class="chart-item animate__animated">
+                                                <div class="chart-item__style"
+                                                     style="background: transparent; border-width: 0px; border-style: solid; border-color: transparent; border-radius: 0px;"></div>
+                                                <div class="chart-item__content"
+                                                     style="border-width: 0px; border-style: solid; border-color: transparent; opacity: 1;">
+                                                    <div class="simple-text-chart-container"
+                                                         style="font-family: &quot;Microsoft Yahei&quot;, Arial, sans-serif; font-size: 16px; color: rgb(154, 168, 212); font-weight: normal; justify-content: flex-start; text-align: start;">
+                                                        <div class="">危险品试剂占比</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="chart_dc_1013e-6zgmrslb-y8q2b4" class="d-chart-item"
+                                             style="width: 55px; height: 30px; left: 30px; top: 195px; z-index: 61; pointer-events: auto;">
+                                            <div class="chart-item animate__animated">
+                                                <div class="chart-item__style"
+                                                     style="background: transparent; border-width: 0px; border-style: solid; border-color: transparent; border-radius: 0px;"></div>
+                                                <div class="chart-item__content"
+                                                     style="border-width: 0px; border-style: solid; border-color: transparent; opacity: 1;">
+                                                    <div class="simple-text-chart-container"
+                                                         style="font-family: &quot;Microsoft Yahei&quot;, Arial, sans-serif; font-size: 16px; color: rgb(154, 168, 212); font-weight: normal; justify-content: flex-start; text-align: start;">
+                                                        <div class="">库存量</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="chart_dc_1013e-5jjt7snl-6mez48" class="d-chart-item"
+                                             style="width: 140px; height: 25px; left: 140px; top: 150px; z-index: 60; pointer-events: auto;">
+                                            <div class="chart-item animate__animated">
+                                                <div class="chart-item__style"
+                                                     style="background: transparent; border-width: 0px; border-style: solid; border-color: transparent; border-radius: 0px;"></div>
+                                                <div class="chart-item__content"
+                                                     style="border-width: 0px; border-style: solid; border-color: transparent; opacity: 1;">
+                                                    <div class="simple-text-chart-container"
+                                                         style="font-family: &quot;Microsoft Yahei&quot;, Arial, sans-serif; font-size: 20px; color: rgb(64, 77, 105); font-weight: normal; justify-content: flex-start; text-align: start;">
+                                                        <div class="">Reagent Data</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="chart_dc_1013e-6yzggune-4672yj" class="d-chart-item"
+                                             style="width: 95px; height: 35px; left: 30px; top: 145px; z-index: 59; pointer-events: auto;">
+                                            <div class="chart-item animate__animated">
+                                                <div class="chart-item__style"
+                                                     style="background: transparent; border-width: 0px; border-style: solid; border-color: transparent; border-radius: 0px;"></div>
+                                                <div class="chart-item__content"
+                                                     style="border-width: 0px; border-style: solid; border-color: transparent; opacity: 1;">
+                                                    <div class="simple-text-chart-container"
+                                                         style="font-family: &quot;Microsoft Yahei&quot;, Arial, sans-serif; font-size: 22px; color: rgb(154, 168, 212); font-weight: normal; justify-content: flex-start; text-align: start;">
+                                                        <div class="">试剂数据</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="chart_dc_1013e-6r8yp5iv-qewj6n" class="d-chart-item"
+                                             style="width: 82px; height: 57px; left: 467px; top: 192px; z-index: 58; pointer-events: auto;">
+                                            <div class="chart-item animate__animated">
+                                                <div class="chart-item__style"
+                                                     style="background: transparent; border-width: 0px; border-style: solid; border-color: transparent; border-radius: 0px;"></div>
+                                                <div class="chart-item__content"
+                                                     style="border-width: 0px; border-style: solid; border-color: transparent; opacity: 1;">
+                                                    <div class="simple-text-chart-container"
+                                                         style="font-family: &quot;Microsoft Yahei&quot;, Arial, sans-serif; font-size: 18px; color: rgb(115, 170, 229); font-weight: normal; justify-content: center; text-align: center;">
+                                                        <div class="">瓶</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="chart_dc_1013e-1bu8jf2w-n5wey3" class="d-chart-item"
+                                             style="width: 540px; height: 96px; left: 11px; top: 350px; z-index: 57; pointer-events: auto;">
+                                            <div class="chart-item animate__animated">
+                                                <div class="chart-item__style"
+                                                     style="background: transparent; border-width: 0px; border-style: solid; border-color: transparent; border-radius: 0px;"></div>
+                                                <div class="chart-item__content"
+                                                     style="border-width: 0px; border-style: solid; border-color: transparent; opacity: 1;">
+                                                    <div class="chart-toolbar">
+                                                        <div class="cxd-DropDown  cxd-DropDown--alignRight">
+                                                            <button class="cxd-Button cxd-Button--default cxd-Button--iconOnly cxd-Button--xs">
+                                                                <span class="cxd-DropDown-caret"><svg viewBox="0 0 12 8"
+                                                                                                      class="icon icon-caret"><g
+                                                                        id="04\u4E0B\u62C9/24px/\u9ED8\u8BA4\u7981\u7528"
+                                                                        transform="translate(-115.000000, -8.000000)"><polygon
+                                                                        id="Shape" fill="currentColor"
+                                                                        fill-rule="nonzero"
+                                                                        points="125.472727 8 121 12.8 116.527273 8 115 9.6 121 16 127 9.6"></polygon></g></svg></span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="progress-bar-warpper">
+                                                        <div class="progress-bar"
+                                                             style="height: 10px; border-radius: 10px; background: rgba(255, 255, 255, 0.1);">
+                                                            <div class="progress-bar-bar" id="hazardousProportionCss"
+                                                                 style="width: 9%; border-radius: 10px; background: linear-gradient(to right, rgb(36, 203, 255) 30%, rgb(144, 0, 255) 100%);">
+                                                                <div class="progress-bar-bar-light"
+                                                                     style="width: 6px; height: 6px; border-radius: 6px; margin: 2px; background: rgb(255, 255, 255);"></div>
+                                                            </div>
+                                                            <div class="progress-bar-tip" id="hazardousProportion"
+                                                                 style="font-family: &quot;Microsoft Yahei&quot;; font-size: 24px; font-weight: bold; color: rgb(255, 255, 255); top: -30.8px; left: calc(9% - 5px); margin-left: -50%;">
+                                                                9%
+                                                            </div>
+                                                            <div class="progress-bar-triangle"
+                                                                 id="hazardousProportionSpotCss"
+                                                                 style="top: 10px; left: calc(9% - 5px); margin-left: -50%; font-size: 14.4px; color: rgb(255, 255, 255);">
+                                                                <i class="fa fa-caret-up" aria-hidden="true"></i></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="chart_dc_1013e-3fcipz0v-lzqv4q" class="d-chart-item"
+                                             style="width: 95px; height: 75px; left: 1525px; top: 205px; z-index: 56; pointer-events: auto;">
+                                            <div class="chart-item animate__animated">
+                                                <div class="chart-item__style"
+                                                     style="background: transparent; border-width: 0px; border-style: solid; border-color: transparent; border-radius: 0px;"></div>
+                                                <div class="chart-item__content"
+                                                     style="border-width: 0px; border-style: solid; border-color: transparent; opacity: 1;">
+                                                    <div class="chart-toolbar">
+                                                        <div class="cxd-DropDown  cxd-DropDown--alignRight">
+                                                            <button class="cxd-Button cxd-Button--default cxd-Button--iconOnly cxd-Button--xs">
+                                                                <span class="cxd-DropDown-caret"><svg viewBox="0 0 12 8"
+                                                                                                      class="icon icon-caret"><g
+                                                                        id="04\u4E0B\u62C9/24px/\u9ED8\u8BA4\u7981\u7528"
+                                                                        transform="translate(-115.000000, -8.000000)"><polygon
+                                                                        id="Shape" fill="currentColor"
+                                                                        fill-rule="nonzero"
+                                                                        points="125.472727 8 121 12.8 116.527273 8 115 9.6 121 16 127 9.6"></polygon></g></svg></span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flip-number-warpper"
+                                                         style="justify-content: flex-start;">
+                                                        <div class="flip-number" style="flex-direction: column;">
+                                                            <div class="flip-number-prefix"
+                                                                 style="font-family: &quot;Microsoft Yahei&quot;; font-size: 14px; color: rgb(115, 170, 229); align-self: flex-end; margin-right: 0px; margin-bottom: 0px;"></div>
+                                                            <div class="flip-number-number"
+                                                                 style="align-self: flex-start;">
+                                                                <div class="flip-single-number" id="putInCount"
+                                                                     style="font-family: &quot;Microsoft Yahei&quot;, Arial, sans-serif; font-size: 32px; font-weight: bold; color: rgb(255, 255, 255); margin-left: 0px; margin-right: 0px; padding: 0px; box-sizing: content-box; width: 0.6em; text-align: center;">
+                                                                    0
+                                                                </div>
+                                                            </div>
+                                                            <div class="flip-number-suffix"
+                                                                 style="font-family: &quot;Microsoft Yahei&quot;; font-size: 14px; color: rgb(176, 194, 249); align-self: flex-start; margin-left: 0px; margin-top: 0px;">
+                                                                今日入库(瓶)
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="chart_dc_1013e-af09x1qc-w823vn" class="d-chart-item"
+                                             style="width: 75px; height: 75px; left: 1424px; top: 203px; z-index: 55; pointer-events: auto;">
+                                            <div class="chart-item animate__animated">
+                                                <div class="chart-item__style"
+                                                     style="background: transparent; border-width: 0px; border-style: solid; border-color: transparent; border-radius: 0px;"></div>
+                                                <div class="chart-item__content"
+                                                     style="border-width: 0px; border-style: solid; border-color: transparent; opacity: 1;">
+                                                    <div class="image-chart-container"
+                                                         style="width: 75px; height: 75px; line-height: 75px; background-image: url(&quot;./../../static/index/img-templet/pic-4.png&quot;); opacity: 1; margin-left: -37.5px; margin-top: -37.5px; transform: rotate(0deg); background-size: 100% 100%; background-repeat: no-repeat; background-position: center center;"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="chart_dc_1013e-1at6o2fu-redn4e" class="d-chart-item"
+                                             style="width: 515px; height: 120px; left: 15px; top: 200px; z-index: 54; pointer-events: auto;">
+                                            <div class="chart-item animate__animated">
+                                                <div class="chart-item__style"
+                                                     style="background: transparent; border-width: 0px; border-style: solid; border-color: transparent; border-radius: 0px;"></div>
+                                                <div class="chart-item__content"
+                                                     style="border-width: 0px; border-style: solid; border-color: transparent; opacity: 1;">
+                                                    <div class="chart-toolbar">
+                                                        <div class="cxd-DropDown  cxd-DropDown--alignRight">
+                                                            <button class="cxd-Button cxd-Button--default cxd-Button--iconOnly cxd-Button--xs">
+                                                                <span class="cxd-DropDown-caret"><svg viewBox="0 0 12 8"
+                                                                                                      class="icon icon-caret"><g
+                                                                        id="04\u4E0B\u62C9/24px/\u9ED8\u8BA4\u7981\u7528"
+                                                                        transform="translate(-115.000000, -8.000000)"><polygon
+                                                                        id="Shape" fill="currentColor"
+                                                                        fill-rule="nonzero"
+                                                                        points="125.472727 8 121 12.8 116.527273 8 115 9.6 121 16 127 9.6"></polygon></g></svg></span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flip-number-warpper" style="justify-content: center;">
+                                                        <div class="flip-number" style="flex-direction: column;">
+                                                            <div class="flip-number-prefix"
+                                                                 style="font-family: &quot;Microsoft Yahei&quot;; font-size: 20px; color: rgb(96, 109, 140); align-self: flex-end; margin-right: 0px; margin-bottom: 0px;"></div>
+                                                            <div class="flip-number-number" style="align-self: center;"
+                                                                 id="allStock">
+                                                            </div>
+                                                            <div class="flip-number-suffix"
+                                                                 style="font-family: &quot;Microsoft Yahei&quot;; font-size: 14px; color: rgb(115, 170, 229); align-self: flex-end; margin-left: 0px; margin-top: 0px;"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="chart_dc_1013e-cpdvf4oh-e82rve" class="d-chart-item"
+                                             style="width: 210px; height: 35px; left: 1675px; top: 40px; z-index: 53; pointer-events: auto;">
+                                            <div class="chart-item animate__animated">
+                                                <div class="chart-item__style"
+                                                     style="background: transparent; border-width: 0px; border-style: solid; border-color: transparent; border-radius: 0px;"></div>
+                                                <div class="chart-item__content"
+                                                     style="border-width: 0px; border-style: solid; border-color: transparent; opacity: 1;">
+                                                    <div class="time-chart-container"
+                                                         style="font-family: &quot;Microsoft Yahei&quot;, Arial, sans-serif; font-size: 20px; color: rgb(255, 255, 255); font-weight: normal; justify-content: center;">
+                                                        2021-10-11 16:46:11
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="chart_dc_1013e-4bw501s-jnvmye" class="d-chart-item"
+                                             style="width: 480px; height: 65px; left: 740px; top: 20px; z-index: 52; pointer-events: auto;">
+                                            <div class="chart-item animate__animated">
+                                                <div class="chart-item__style"
+                                                     style="background: transparent; border-width: 0px; border-style: solid; border-color: transparent; border-radius: 0px;"></div>
+                                                <div class="chart-item__content"
+                                                     style="border-width: 0px; border-style: solid; border-color: transparent; opacity: 1;">
+                                                    <div class="simple-text-chart-container"
+                                                         style="font-family: &quot;Microsoft Yahei&quot;, Arial, sans-serif; font-size: 36px; color: rgb(255, 255, 255); font-weight: bold; justify-content: center; text-align: center;">
+                                                        <div class="">浙江省疾控试剂数据展示大屏</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="chart_dc_1013e-ayseffwx-gzjbm9" class="d-chart-item"
+                                             style="width: 1532px; height: 49px; left: 206px; top: 1028px; z-index: 51; pointer-events: auto;">
+                                            <div class="chart-item animate__animated">
+                                                <div class="chart-item__style"
+                                                     style="background: transparent; border-width: 0px; border-style: solid; border-color: transparent; border-radius: 0px;"></div>
+                                                <div class="chart-item__content"
+                                                     style="border-width: 0px; border-style: solid; border-color: transparent; opacity: 1;">
+                                                    <div class="image-chart-container"
+                                                         style="width: 1532px; height: 49px; line-height: 49px; background-image: url(&quot;./../../static/index/img-templet/pic-1.png&quot;); opacity: 1; margin-left: -766px; margin-top: -24.5px; transform: rotate(0deg); background-size: 100% 100%; background-repeat: no-repeat; background-position: center center;"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="chart_dc_1013e-acr0shld-93mb6d" class="d-chart-item"
+                                             style="width: 1625px; height: 146px; left: 164px; top: 3px; z-index: 50; pointer-events: auto;">
+                                            <div class="chart-item animate__animated">
+                                                <div class="chart-item__style"
+                                                     style="background: transparent; border-width: 0px; border-style: solid; border-color: transparent; border-radius: 0px;"></div>
+                                                <div class="chart-item__content"
+                                                     style="border-width: 0px; border-style: solid; border-color: transparent; opacity: 1;">
+                                                    <div class="image-chart-container"
+                                                         style="width: 1625px; height: 146px; line-height: 146px; background-image: url(&quot;./../../static/index/img-templet/pic-2.png&quot;); opacity: 1; margin-left: -812.5px; margin-top: -73px; transform: rotate(0deg); background-size: 100% 100%; background-repeat: no-repeat; background-position: center center;"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="resize-sensor"
+                         style="position: absolute; inset: 0px; overflow: scroll; z-index: -1; visibility: hidden;">
+                        <div class="resize-sensor-expand"
+                             style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: scroll; z-index: -1; visibility: hidden;">
+                            <div style="position: absolute; left: 0px; top: 0px; width: 1644px; height: 1080px;"></div>
+                        </div>
+                        <div class="resize-sensor-shrink"
+                             style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: scroll; z-index: -1; visibility: hidden;">
+                            <div style="position: absolute; left: 0; top: 0; width: 200%; height: 200%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="device-container mobile">
+                <div class="mobile-img"></div><iframe class="mobile-iframe" src="./../../static/index/d_1013e-1ilmb0wi-kzn8j6.html" style="height: 680px; width: 320px; margin-left: -160px; top: 50px;"></iframe>
+                <div class="device-container__rotate-button"><i class="fa fa fa-undo"></i></div>
+            </div> -->
+        </div>
+    </div>
+</div>
+<script charset="utf-8" src="./../../static/index/UrlChangeTracker.js"></script>
+<script src="./../../static/index/raven.min.js"></script>
+<script src="./../../static/index/hm.js"></script>
+<script type="text/javascript">
+    window.translation = "";
+    window.lang = "zh_cn";
+    var browserNotSupport = false;
+    var ua = navigator.userAgent;
+    if (!/(chrome|webkit|safari|firefox)/i.test(ua) || /\bEdge\//.test(ua) || /\bOPR\//.test(ua)) {
+        browserNotSupport = true;
+        document.getElementById('sugar-root').innerHTML = '<p style="text-align:center; margin-top:10px; font-size:16px;">系统不支持您当前内核的浏览器，建议使用Chrome浏览器</p>';
+    }
+</script>
+<!-- <script src="//api.map.baidu.com/api?v=3.0&ak=pWKhO4mQb4s9MWqP0siqzGlZW5aeqG90"></script> -->
+<script type="text/javascript" src="./../../static/index/mod.js"></script>
+<script type="text/javascript" src="./../../static/index/index.tpl_map.js"></script>
+<script type="text/javascript" src="./../../static/index/react.js"></script>
+<script type="text/javascript" src="./../../static/index/lodash.js"></script>
+<script type="text/javascript" src="./../../static/index/amis.js"></script>
+<script type="text/javascript" src="./../../static/index/froala-editor.js"></script>
+
+<script type="text/javascript" src="./../../static/index/lib.js"></script>
+<script type="text/javascript" src="./../../static/index/d3.js"></script>
+<script type="text/javascript" src="./../../static/index/app.js"></script>
+<script type="text/javascript" src="./../../static/index/loadjs.min.js"></script>
+<script type="text/javascript" src="./../../static/index/jquery.min.js"></script>
+{#<script type="text/javascript" src="./../../static/index/echarts.min.js"></script>#}
+<script type="text/javascript" src="./../../static/index/echarts-1.js"></script>
+<script type="text/javascript" src="./../../static/index/worldcloud.js"></script>
+<script type="text/javascript">
+    var _hmt = _hmt || [];
+
+    let stockCount_url = "{% url 'api:getAllStockCount' %}";  // 库存 危化品占比
+    let statisticalData_url = "{% url 'api:getStatisticalData' %}";  // 统计数据  今日入库 今日领用 今日归还 采购到货
+    let acceptance_url = "{% url 'api:getAcceptance' %}";  // 待入库提醒
+    let oftenUse_url = "{% url 'api:getOftenUse' %}";   // 常用试剂
+    let wantPurchaseList_url = "{% url 'api:getWantPurchaseList' %}"; // 申购提醒
+    let warningListJson_url = "{% url 'api:getWarningListJson' %}";  // 预警提醒
+    let getTemperatureChartData_url = "{% url 'api:getTemperatureEchartsJson' %}";  // 温度图数据
+
+    function get_data(){
+        stockCount();
+        warningListJson();
+        acceptance();
+        wantPurchaseList();
+        statisticalData();
+    }
+    function get_1_hour(){
+        getTemperatureChartData();
+        OftenUseChartData();
+    }
+    get_1_hour();
+    get_data();
+    showTime();                     //先调用下，否则还需一秒后才呈现
+    setInterval(showTime, 1000);
+    setInterval(get_data, 5000);
+    setInterval(get_data, 1000 * 60 * 60);
+    // 实时显示时间
+    function showTime() {
+        var today = new Date;
+        var y = today.getFullYear();
+        var M = today.getMonth() + 1;
+        var d = today.getDate();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+        if (M < 10) {
+            M = '0' + M
+        }
+        if (d < 10) {
+            d = '0' + d
+        }
+        if (h < 10) {
+            h = '0' + h
+        }
+        if (m < 10) {
+            m = '0' + m
+        }
+        if (s < 10) {
+            s = '0' + s
+        }
+        $(".time-chart-container").html(y + '-' + M + '-' + d + '  ' + h + ':' + m + ':' + s);
+    }
+    function warningListJson() {
+        $.get(warningListJson_url, function (obj) {
+            let data_list = obj.data;
+            // console.log(data_list)
+            // top: 45.25px;
+            $(".warningList_div").remove();
+            let top = 724;
+            for (let i = 0; i < data_list.length; i++) {
+                let data = data_list[i];
+                let warningType = replace_objectType(data.ObjectType);
+                let date = replace_WarningDate(data.WarningDate);
+                let number = i + 1
+                let div = '<div class="table-play-line table-play-line-odd table-dashboard warningList_div" style="background-color: rgba(255, 255, 255, 0.1); color: rgb(115, 170, 229); height: 45.25px; top: ' + top + 'px;"><div class="table-play-line-item text-left" style="width: 8%;"><div class="table-play-line-content" style="font-size: 13px; text-align: center; text-overflow: ellipsis; white-space: nowrap; width: 20.8px; height: 20.8px; line-height: 20.8px; border-radius: 50%; color: rgb(255, 255, 255); background-color: rgb(72, 76, 220);">' + number + '</div></div><div class="table-play-line-item text-right" style="width: 15%;"><div class="table-play-line-content" style="font-size: 13px; text-align: left; text-overflow: ellipsis; white-space: nowrap;">' + warningType + '</div></div><div class="table-play-line-item text-right" style="width: 13%;"><div class="table-play-line-content" style="font-size: 13px; text-align: left; text-overflow: ellipsis; white-space: nowrap;">' + data.ObjectName + '</div></div><div class="table-play-line-item text-right" style="width: 50%;"><div class="table-play-line-content" style="font-size: 13px; text-align: left; text-overflow: ellipsis; white-space: nowrap;">' + data.WarningContent + '</div></div><div class="table-play-line-item text-right" style="width: 15%;"><div class="table-play-line-content" style="font-size: 13px; text-align: left; text-overflow: ellipsis; white-space: nowrap;">' + date + '</div></div></div>';
+                $("#warningList").append(div);
+                top = top + 45.25;
+            }
+        });
+    }
+
+    function acceptance() {
+        $.get(acceptance_url, function (obj) {
+            let data_list = obj.data;
+            // console.log(data_list)
+            $(".acceptance_tr").remove();
+            for (let i = 0; i < data_list.length; i++) {
+                let data = data_list[i];
+                let tr = '<tr class="normalTableTr table-dashboard acceptance_tr" style="background-color: rgba(255, 255, 255, 0.05);"> <td rowspan="1" colspan="1" class="table-td-undefined text-left" style="border-color: rgb(51, 65, 107); font-size: 16px; padding: 8px 12px; text-align: center;">' + data.AcceptanceOrderCode + '</td> <td rowspan="1" colspan="1" class="table-td-undefined text-right" style="border-color: rgb(51, 65, 107); font-size: 16px; padding: 8px 12px; text-align: center;">' + data.AcceptanceDate + '</td> <td rowspan="1" colspan="1" class="table-td-undefined text-right" style="border-color: rgb(51, 65, 107); font-size: 16px; padding: 8px 12px; text-align: center;">' + data.AcceptanceOrderTotalCount + '</td> </tr>'
+                $("#acceptance").append(tr);
+            }
+        });
+    }
+
+    function wantPurchaseList() {
+        $.get(wantPurchaseList_url, function (obj) {
+            let data_list = obj.data;
+            // console.log(data_list)
+            $(".WantPurchaseList_tr").remove();
+            for (let i = 0; i < data_list.length; i++) {
+                let data = data_list[i];
+                let status = data.status ? '已申购' : '未处理';
+                let tr = '<tr class="normalTableTr table-dashboard WantPurchaseList_tr" style="background-color: rgba(255, 255, 255, 0.05);"><td rowspan="1" colspan="1" class="table-td-undefined text-left" style="border-color: rgb(51, 65, 107); font-size: 16px; padding: 8px 12px; text-align: center;">' + data.name + '</td> <td rowspan="1" colspan="1" class="table-td-undefined text-right" style="border-color: rgb(51, 65, 107); font-size: 16px; padding: 8px 12px; text-align: center;">' + data.stockCount + '</td><td rowspan="1" colspan="1" class="table-td-undefined text-right" style="border-color: rgb(51, 65, 107); font-size: 16px; padding: 8px 12px; text-align: center;">' + data.warningValue + '</td> <td rowspan="1" colspan="1" class="table-td-undefined text-right" style="border-color: rgb(51, 65, 107); font-size: 16px; padding: 8px 12px; text-align: center;">' + status + '</td></tr>'
+                $("#WantPurchaseList").append(tr);
+            }
+        });
+    }
+
+    function statisticalData() {
+        $.get(statisticalData_url, function (obj) {
+            $("#putInCount").html(obj.putInCount);
+            $("#useCount").html(obj.useCount);
+            $("#returnCount").html(obj.returnCount);
+            $("#purchaseCount").html(obj.purchaseCount);
+        });
+    }
+
+    function stockCount() {
+        // 库存量 危化品占比
+        $.get(stockCount_url, function (obj) {
+            console.log(obj);
+            $(".count_stock").remove();
+            let count_str = String(obj.allCount);
+            for (let num = 0; num < count_str.length; num++) {
+                let data = count_str.charAt(num)
+                console.log(data);
+                let div = '<div class="flip-single-number count_stock" style="font-family: &quot;Microsoft Yahei&quot;, Arial, sans-serif; font-size: 56px; font-weight: bold; color: rgb(255, 255, 255); margin-left: 8.4px; margin-right: 8.4px; padding: 0px 0.1em; box-sizing: content-box; width: 0.6em; text-align: center; background-color: rgb(15, 57, 107);">' + data + '</div>'
+                $('#allStock').append(div);
+            }
+            let hazardousProportion = obj.hazardousProportion * 100;
+            hazardousProportion = hazardousProportion.toFixed(2);
+            let proportion = hazardousProportion + '%'
+            $("#hazardousProportion").html(proportion);
+            $("#hazardousProportionCss").css("width", proportion);
+            let SpotCss = "calc(" + proportion + " - 5px)"
+            $("#hazardousProportionSpotCss").css("left", SpotCss);
+
+        })
+    }
+
+    // 替换预警类型
+    function replace_objectType(params) {
+        switch (params) {
+            case '1':
+                return '保质期预警';
+            case '2':
+                return '过期报警';
+            case '3':
+                return '余量预警';
+            case '4':
+                return '药柜温湿度预警';
+            case '5':
+                return '滤芯保质期预警';
+            case '6':
+                return '出库超期预警';
+            case '7':
+                return '违规领用预警';
+        }
+    }
+    function replace_WarningDate(params) {
+        if(params){
+            return params.replace('T', ' ')
+        }
+    }
+
+
+    // 温度图
+    function getTemperatureChartData() {
+        $.get(getTemperatureChartData_url, function (obj) {
+            $('#charts').html('');
+            var lineChart = echarts.init(document.getElementById("charts"));
+            var lineoption = obj.data;
+            lineChart.setOption(lineoption);
+            $(window).resize(lineChart.resize);
+        });
+    }
+    function OftenUseChart(jsonData){   //
+        // 基于准备好的dom，初始化echarts实例\
+        var myChart = echarts.init(document.getElementById('OftenUse'));
+        var option = {
+            tooltip: {
+                formatter: '{b} : {c} ({d}%)'
+            },
+            legend: {
+                bottom: 10,
+                left: 'center',
+            },
+            series: [
+                {
+                    type: 'pie',
+                    radius: '65%',
+                    center: ['50%', '50%'],
+                    selectedMode: 'single',
+                    data: jsonData,
+                    emphasis: {
+                        itemStyle: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+            ]
+        };
+        myChart.setOption(option);
+    }
+    function OftenUseChartData(){
+        new Promise((resolve, reject) => {
+            $.get(oftenUse_url, function (obj) {
+                let jsonData = obj.data
+                resolve(jsonData)
+            });
+        }).then(jsonData => {
+            console.log(typeof jsonData);
+            console.log(jsonData);
+            echartsCloud(jsonData);
+            OftenUseChart(jsonData);
+
+
+        })
+    }
+
+    function echartsCloud(jsonData){
+        var jsonData = jsonData.slice(0,jsonData.length - 1);
+        console.log(jsonData);
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('wordCloud'));
+
+        myChart.setOption({
+            title: {
+                // text: 'echarts3云图展示'
+            },
+            tooltip: {},
+            series: [{
+                type : 'wordCloud',  //类型为字符云
+                    shape:'smooth',  //平滑
+                    gridSize : 2, //网格尺寸
+                    size : ['100%','100%'],
+                    //sizeRange : [ 50, 100 ],
+                    rotationRange : [ 0, 0 ], //旋转范围
+                    textStyle : {
+                        normal : {
+                            fontFamily:'sans-serif',
+                            color : function() {
+                                return 'rgb('
+                                        + [ Math.round(Math.random() * 160),
+                                                Math.round(Math.random() * 160),
+                                                Math.round(Math.random() * 160) ]
+                                                .join(',') + ')';
+                            }
+                        },
+                        emphasis : {
+                            shadowBlur : 5,  //阴影距离
+                            shadowColor : '#333'  //阴影颜色
+                        }
+                    },
+                 data:jsonData,
+            }]
+        });
+    }
+
+</script>
+
+<div class="resize-sensor" style="position: absolute; inset: 0px; overflow: scroll; z-index: -1; visibility: hidden;">
+    <div class="resize-sensor-expand"
+         style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: scroll; z-index: -1; visibility: hidden;">
+        <div style="position: absolute; left: 0px; top: 0px; width: 1644px; height: 1085px;"></div>
+    </div>
+    <div class="resize-sensor-shrink"
+         style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: scroll; z-index: -1; visibility: hidden;">
+        <div style="position: absolute; left: 0; top: 0; width: 200%; height: 200%"></div>
+    </div>
+</div>
+</body>
+
+</html>

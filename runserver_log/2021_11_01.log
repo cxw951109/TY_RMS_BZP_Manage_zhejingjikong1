@@ -1,0 +1,32 @@
+具体时间:[2021-11-01 08:39:33,731][default:INFO(22)]
+当前文件位置:[C:\Users\Administrator\Desktop\20211011\TY_RMS_BZP_Manage_yanshi_new\user\login_required.py]模块名:[login_required:]函数名:[process_request]:
+[第22行]-用户没有登录, 跳转到登录页面
+
+具体时间:[2021-11-01 08:39:35,775][default:INFO(22)]
+当前文件位置:[C:\Users\Administrator\Desktop\20211011\TY_RMS_BZP_Manage_yanshi_new\user\login_required.py]模块名:[login_required:]函数名:[process_request]:
+[第22行]-用户没有登录, 跳转到登录页面
+
+具体时间:[2021-11-01 08:39:43,675][default:INFO(182)]
+当前文件位置:[C:\Users\Administrator\Desktop\20211011\TY_RMS_BZP_Manage_yanshi_new\TY_RMS_Multiple_Manage\views.py]模块名:[views:]函数名:[account_login]:
+[第182行]-登录成功
+
+具体时间:[2021-11-01 09:43:20,542][default:INFO(182)]
+当前文件位置:[C:\Users\Administrator\Desktop\20211011\TY_RMS_BZP_Manage_yanshi_new\TY_RMS_Multiple_Manage\views.py]模块名:[views:]函数名:[account_login]:
+[第182行]-登录成功
+
+具体时间:[2021-11-01 14:15:19,924][default:INFO(182)]
+当前文件位置:[C:\Users\Administrator\Desktop\20211011\TY_RMS_BZP_Manage_yanshi_new\TY_RMS_Multiple_Manage\views.py]模块名:[views:]函数名:[account_login]:
+[第182行]-登录成功
+
+具体时间:[2021-11-01 15:12:05,255][default:INFO(22)]
+当前文件位置:[C:\Users\Administrator\Desktop\20211011\TY_RMS_BZP_Manage_yanshi_new\user\login_required.py]模块名:[login_required:]函数名:[process_request]:
+[第22行]-用户没有登录, 跳转到登录页面
+
+具体时间:[2021-11-01 15:12:07,769][default:INFO(22)]
+当前文件位置:[C:\Users\Administrator\Desktop\20211011\TY_RMS_BZP_Manage_yanshi_new\user\login_required.py]模块名:[login_required:]函数名:[process_request]:
+[第22行]-用户没有登录, 跳转到登录页面
+
+具体时间:[2021-11-01 15:12:14,429][default:INFO(182)]
+当前文件位置:[C:\Users\Administrator\Desktop\20211011\TY_RMS_BZP_Manage_yanshi_new\TY_RMS_Multiple_Manage\views.py]模块名:[views:]函数名:[account_login]:
+[第182行]-登录成功
+
